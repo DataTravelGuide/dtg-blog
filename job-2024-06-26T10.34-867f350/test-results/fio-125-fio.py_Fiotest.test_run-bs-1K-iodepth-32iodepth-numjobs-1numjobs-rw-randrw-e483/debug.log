@@ -1,0 +1,316 @@
+[stdlog] 2024-06-26 13:02:24,460 avocado.test INFO | INIT 1-fio.py:Fiotest.test
+[stdlog] 2024-06-26 13:02:24,464 avocado.test DEBUG| PARAMS (key=timeout, path=*, default=None) => None
+[stdlog] 2024-06-26 13:02:24,465 avocado.test DEBUG| Test metadata:
+[stdlog] 2024-06-26 13:02:24,465 avocado.test DEBUG|   filename: /nfs/cbd-tests/fio.py
+[stdlog] 2024-06-26 13:02:24,465 avocado.test DEBUG|   teststmpdir: /tmp/avocado_nupl0quk
+[stdlog] 2024-06-26 13:02:24,466 avocado.test INFO | START 1-fio.py:Fiotest.test
+[stdlog] 2024-06-26 13:02:24,466 avocado.test DEBUG| PARAMS (key=dev_path, path=*, default=None) => '/dev/cbd0'
+[stdlog] 2024-06-26 13:02:24,466 avocado.test DEBUG| PARAMS (key=runtime, path=*, default=None) => '10'
+[stdlog] 2024-06-26 13:02:24,466 avocado.test DEBUG| PARAMS (key=ioengine, path=*, default=None) => 'libaio'
+[stdlog] 2024-06-26 13:02:24,466 avocado.test DEBUG| PARAMS (key=rw_type, path=*, default=None) => 'randrw'
+[stdlog] 2024-06-26 13:02:24,466 avocado.test DEBUG| PARAMS (key=block_size, path=*, default=None) => '1K'
+[stdlog] 2024-06-26 13:02:24,466 avocado.test DEBUG| PARAMS (key=iodepth, path=*, default=None) => '32'
+[stdlog] 2024-06-26 13:02:24,467 avocado.test DEBUG| PARAMS (key=numjobs, path=*, default=None) => '1'
+[stdlog] 2024-06-26 13:02:24,467 avocado.test DEBUG| PARAMS (key=output_file, path=*, default=None) => 'output.cvs'
+[stdlog] 2024-06-26 13:02:24,467 avocado.test DEBUG| PARAMS (key=rwmixread, path=*, default=None) => 70
+[stdlog] 2024-06-26 13:02:24,467 avocado.test DEBUG| PARAMS (key=result_type, path=*, default=None) => 'read write'
+[stdlog] 2024-06-26 13:02:24,468 avocado.utils.process INFO | Running 'fio --name=test --rw=randrw --bs=1K --runtime=10 --ioengine=libaio --iodepth=32 --numjobs=1 --filename=/dev/cbd0 --direct=1 --group_reporting --time_based=1 --output-format=json --rwmixread 70'
+[stdlog] 2024-06-26 13:02:34,836 avocado.utils.process DEBUG| [stdout] {
+[stdlog] 2024-06-26 13:02:34,836 avocado.utils.process DEBUG| [stdout]   "fio version" : "fio-3.28",
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]   "timestamp" : 1719406954,
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]   "timestamp_ms" : 1719406954833,
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]   "time" : "Wed Jun 26 13:02:34 2024",
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]   "jobs" : [
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]     {
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]       "jobname" : "test",
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]       "groupid" : 0,
+[stdlog] 2024-06-26 13:02:34,837 avocado.utils.process DEBUG| [stdout]       "error" : 0,
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]       "eta" : 0,
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]       "elapsed" : 11,
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]       "job options" : {
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]         "name" : "test",
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]         "rw" : "randrw",
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]         "bs" : "1K",
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]         "runtime" : "10",
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]         "ioengine" : "libaio",
+[stdlog] 2024-06-26 13:02:34,838 avocado.utils.process DEBUG| [stdout]         "iodepth" : "32",
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]         "numjobs" : "1",
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]         "filename" : "/dev/cbd0",
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]         "direct" : "1",
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]         "time_based" : "1",
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]         "rwmixread" : "70"
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]       "read" : {
+[stdlog] 2024-06-26 13:02:34,839 avocado.utils.process DEBUG| [stdout]         "io_bytes" : 343987200,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "io_kbytes" : 335925,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "bw_bytes" : 34395280,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "bw" : 33589,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "iops" : 33589.141086,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "runtime" : 10001,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "total_ios" : 335925,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "short_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "drop_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,840 avocado.utils.process DEBUG| [stdout]         "slat_ns" : {
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "min" : 9464,
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "max" : 179164,
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "mean" : 17969.579778,
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "stddev" : 2900.989986,
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "N" : 335925
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]         "clat_ns" : {
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "min" : 44702,
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "max" : 1503159,
+[stdlog] 2024-06-26 13:02:34,841 avocado.utils.process DEBUG| [stdout]           "mean" : 647308.663431,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]           "stddev" : 39767.548878,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]           "N" : 335925,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]           "percentile" : {
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]             "1.000000" : 577536,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]             "5.000000" : 593920,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]             "10.000000" : 602112,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]             "20.000000" : 618496,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]             "30.000000" : 634880,
+[stdlog] 2024-06-26 13:02:34,842 avocado.utils.process DEBUG| [stdout]             "40.000000" : 643072,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "50.000000" : 651264,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "60.000000" : 651264,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "70.000000" : 659456,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "80.000000" : 667648,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "90.000000" : 684032,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "95.000000" : 700416,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "99.000000" : 765952,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "99.500000" : 798720,
+[stdlog] 2024-06-26 13:02:34,843 avocado.utils.process DEBUG| [stdout]             "99.900000" : 962560,
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]             "99.950000" : 1089536,
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]             "99.990000" : 1351680
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]           }
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]         "lat_ns" : {
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]           "min" : 67587,
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]           "max" : 1539568,
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]           "mean" : 665417.594011,
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]           "stddev" : 40824.625354,
+[stdlog] 2024-06-26 13:02:34,844 avocado.utils.process DEBUG| [stdout]           "N" : 335925
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "bw_min" : 32116,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "bw_max" : 36094,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "bw_agg" : 100.000000,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "bw_mean" : 33712.526316,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "bw_dev" : 1010.392628,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "bw_samples" : 19,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "iops_min" : 32116,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "iops_max" : 36094,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "iops_mean" : 33712.526316,
+[stdlog] 2024-06-26 13:02:34,845 avocado.utils.process DEBUG| [stdout]         "iops_stddev" : 1010.392628,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "iops_samples" : 19
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]       "write" : {
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "io_bytes" : 147816448,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "io_kbytes" : 144352,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "bw_bytes" : 14780166,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "bw" : 14433,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "iops" : 14433.756624,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "runtime" : 10001,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "total_ios" : 144352,
+[stdlog] 2024-06-26 13:02:34,846 avocado.utils.process DEBUG| [stdout]         "short_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]         "drop_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]         "slat_ns" : {
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "min" : 10009,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "max" : 78411,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "mean" : 18323.208497,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "stddev" : 2862.106820,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "N" : 144352
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]         "clat_ns" : {
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "min" : 93170,
+[stdlog] 2024-06-26 13:02:34,847 avocado.utils.process DEBUG| [stdout]           "max" : 1390484,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]           "mean" : 647564.701701,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]           "stddev" : 39809.619497,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]           "N" : 144352,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]           "percentile" : {
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "1.000000" : 577536,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "5.000000" : 593920,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "10.000000" : 602112,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "20.000000" : 618496,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "30.000000" : 634880,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "40.000000" : 643072,
+[stdlog] 2024-06-26 13:02:34,848 avocado.utils.process DEBUG| [stdout]             "50.000000" : 651264,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "60.000000" : 651264,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "70.000000" : 659456,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "80.000000" : 667648,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "90.000000" : 684032,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "95.000000" : 700416,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "99.000000" : 765952,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "99.500000" : 806912,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "99.900000" : 962560,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "99.950000" : 1056768,
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]             "99.990000" : 1351680
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]           }
+[stdlog] 2024-06-26 13:02:34,849 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]         "lat_ns" : {
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]           "min" : 111587,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]           "max" : 1431715,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]           "mean" : 666021.046975,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]           "stddev" : 40893.171000,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]           "N" : 144352
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]         "bw_min" : 13824,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]         "bw_max" : 15562,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]         "bw_agg" : 100.000000,
+[stdlog] 2024-06-26 13:02:34,850 avocado.utils.process DEBUG| [stdout]         "bw_mean" : 14476.526316,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "bw_dev" : 436.103883,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "bw_samples" : 19,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "iops_min" : 13824,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "iops_max" : 15562,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "iops_mean" : 14476.526316,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "iops_stddev" : 436.103883,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "iops_samples" : 19
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]       "trim" : {
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "io_bytes" : 0,
+[stdlog] 2024-06-26 13:02:34,851 avocado.utils.process DEBUG| [stdout]         "io_kbytes" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "bw_bytes" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "bw" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "iops" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "runtime" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "total_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "short_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "drop_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]         "slat_ns" : {
+[stdlog] 2024-06-26 13:02:34,852 avocado.utils.process DEBUG| [stdout]           "min" : 0,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "max" : 0,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "mean" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "stddev" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "N" : 0
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]         "clat_ns" : {
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "min" : 0,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "max" : 0,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "mean" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "stddev" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]           "N" : 0
+[stdlog] 2024-06-26 13:02:34,853 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]         "lat_ns" : {
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]           "min" : 0,
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]           "max" : 0,
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]           "mean" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]           "stddev" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]           "N" : 0
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]         },
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]         "bw_min" : 0,
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]         "bw_max" : 0,
+[stdlog] 2024-06-26 13:02:34,854 avocado.utils.process DEBUG| [stdout]         "bw_agg" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "bw_mean" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "bw_dev" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "bw_samples" : 0,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "iops_min" : 0,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "iops_max" : 0,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "iops_mean" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "iops_stddev" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "iops_samples" : 0
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]       "sync" : {
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "total_ios" : 0,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]         "lat_ns" : {
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]           "min" : 0,
+[stdlog] 2024-06-26 13:02:34,855 avocado.utils.process DEBUG| [stdout]           "max" : 0,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]           "mean" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]           "stddev" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]           "N" : 0
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]         }
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "job_runtime" : 10000,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "usr_cpu" : 7.110000,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "sys_cpu" : 92.890000,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "ctx" : 14,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "majf" : 0,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "minf" : 14,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]       "iodepth_level" : {
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]         "1" : 0.100000,
+[stdlog] 2024-06-26 13:02:34,856 avocado.utils.process DEBUG| [stdout]         "2" : 0.100000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "4" : 0.100000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "8" : 0.100000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "16" : 0.100000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "32" : 99.993545,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         ">=64" : 0.000000
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]       "iodepth_submit" : {
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "0" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "4" : 100.000000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "8" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "16" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "32" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         "64" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]         ">=64" : 0.000000
+[stdlog] 2024-06-26 13:02:34,857 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]       "iodepth_complete" : {
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "0" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "4" : 99.999792,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "8" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "16" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "32" : 0.100000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "64" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         ">=64" : 0.000000
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]       "latency_ns" : {
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "2" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "4" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "10" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "20" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,858 avocado.utils.process DEBUG| [stdout]         "50" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "100" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "250" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "500" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "750" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "1000" : 0.000000
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]       "latency_us" : {
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "2" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "4" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "10" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "20" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "50" : 0.010000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "100" : 0.010000,
+[stdlog] 2024-06-26 13:02:34,859 avocado.utils.process DEBUG| [stdout]         "250" : 0.010000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "500" : 0.010000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "750" : 98.655359,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "1000" : 1.276139
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]       "latency_ms" : {
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "2" : 0.064130,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "4" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "10" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "20" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "50" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "100" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "250" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "500" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "750" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,860 avocado.utils.process DEBUG| [stdout]         "1000" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]         "2000" : 0.000000,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]         ">=2000" : 0.000000
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       },
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "latency_depth" : 32,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "latency_target" : 0,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "latency_percentile" : 100.000000,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "latency_window" : 0
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]     }
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]   ],
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]   "disk_util" : [
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]     {
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "name" : "cbd0",
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "read_ios" : 330798,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "write_ios" : 142065,
+[stdlog] 2024-06-26 13:02:34,861 avocado.utils.process DEBUG| [stdout]       "read_merges" : 0,
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]       "write_merges" : 0,
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]       "read_ticks" : 9754,
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]       "write_ticks" : 4245,
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]       "in_queue" : 14000,
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]       "util" : 99.014283
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]     }
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout]   ]
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process DEBUG| [stdout] }
+[stdlog] 2024-06-26 13:02:34,862 avocado.utils.process INFO | Command 'fio --name=test --rw=randrw --bs=1K --runtime=10 --ioengine=libaio --iodepth=32 --numjobs=1 --filename=/dev/cbd0 --direct=1 --group_reporting --time_based=1 --output-format=json --rwmixread 70' finished with 0 after 10.391235276s
+[stdlog] 2024-06-26 13:02:34,864 avocado.test INFO | ['33589, 32, 665']
+[stdlog] 2024-06-26 13:02:34,864 avocado.test INFO | ['33589, 32, 665', '14433, 14, 666']
+[stdlog] 2024-06-26 13:02:34,865 avocado.test INFO | finished
+[stdlog] 2024-06-26 13:02:34,866 avocado.test INFO | PASS 1-fio.py:Fiotest.test
+[stdlog] 2024-06-26 13:02:34,866 avocado.test INFO | 
