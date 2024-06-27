@@ -10,17 +10,47 @@ There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
-# Header 1
+# CBD （CXL Block Device）
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+As shared memory is supported in CXL3.0 spec, we can transfer data via CXL shared memory. CBD means CXL block device, it use CXL shared memory 
+to transfer command and data to access block device in different host, as shown below:
 
-## Header 2
+```js
+     +-------------------------------+                               +------------------------------------+
+     |          node-1               |                               |              node-2                |
+     +-------------------------------+                               +------------------------------------+
+     |                               |                               |                                    |
+     |                       +-------+                               +---------+                          |
+     |                       | cbd0  |                               | backend0+------------------+       |
+     |                       +-------+                               +---------+                  |       |
+     |                       | pmem0 |                               | pmem0   |                  v       |
+     |               +-------+-------+                               +---------+----+     +---------------+
+     |               |    cxl driver |                               | cxl driver   |     |   /dev/sda    |
+     +---------------+--------+------+                               +-----+--------+-----+---------------+
+                              |                                            |
+                              |                                            |
+                              |        CXL                         CXL     |
+                              +----------------+               +-----------+
+                                               |               |
+                                               |               |
+                                               |               |
+                                           +---+---------------+-----+
+                                           |   shared memory device  |
+                                           +-------------------------+
+```
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+any read/write to cbd0 on node-1 will be transferred to node-2 /dev/sda. It works similar with
+nbd (network block device), but it transfer data via CXL shared memory rather than network.
 
-### Header 3
+## Linux kernel module
+
+The kernel module for cbd is in going to linux kernel tree.
+
+## cbd userspace tool
+
+## cbd test suites
+
+### test results
 
 ```js
 // Javascript code with syntax highlighting.
