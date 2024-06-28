@@ -7,32 +7,8 @@ layout: default
 As shared memory is supported in CXL3.0 spec, we can transfer data via CXL shared memory. CBD means CXL block device, it use CXL shared memory 
 to transfer command and data to access block device in different host, as shown below:
 
-```js
-     +-------------------------------+                               +------------------------------------+
-     |          node-1               |                               |              node-2                |
-     +-------------------------------+                               +------------------------------------+
-     |                               |                               |                                    |
-     |                       +-------+                               +---------+                          |
-     |                       | cbd0  |                               | backend0+------------------+       |
-     |                       +-------+                               +---------+                  |       |
-     |                       | pmem0 |                               | pmem0   |                  v       |
-     |               +-------+-------+                               +---------+----+     +---------------+
-     |               |    cxl driver |                               | cxl driver   |     |   /dev/sda    |
-     +---------------+--------+------+                               +-----+--------+-----+---------------+
-                              |                                            |
-                              |                                            |
-                              |        CXL                         CXL     |
-                              +----------------+               +-----------+
-                                               |               |
-                                               |               |
-                                               |               |
-                                           +---+---------------+-----+
-                                           |   shared memory device  |
-                                           +-------------------------+
-```
 
-any read/write to cbd0 on node-1 will be transferred to node-2 /dev/sda. It works similar with
-nbd (network block device), but it transfer data via CXL shared memory rather than network.
+![cbd usecase](./cbd_usecase.png)
 
 <br>
 
