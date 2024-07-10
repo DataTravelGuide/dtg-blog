@@ -22,6 +22,10 @@ It has currently sent an RFC version to the Linux community.
 
 [CBD RFC](https://lore.kernel.org/lkml/20240422071606.52637-1-dongsheng.yang@easystack.cn/)
 
+V1 patchset for CBD sent here:
+
+[CBD V1](https://lore.kernel.org/all/20240709130343.858363-1-dongsheng.yang@linux.dev/)
+
 <br>
 
 ## cbd userspace tool
