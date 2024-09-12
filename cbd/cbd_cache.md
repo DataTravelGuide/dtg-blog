@@ -132,13 +132,7 @@ which allows for stable performance output.
 
 For example, in CBD Cache, the writeback does not need to walk through the indexing tree,
 meaning that the writeback process will not suffer from increased IO latency due to conflict
-in the indexing tree. In contrast, Bcache's writeback process needs to traverse the indexing
-tree to find the dirty keys before performing the writeback.
-
-Bcache provides users with a rich set of mechanisms and parameters, which is great.
-However, with such rich functionality inevitably comes increased complexity. CBD Cache,
-on the other hand, is designed specifically for PMEM scenarios, with a simple design and implementation,
-aiming to provide a low-latency, high-concurrency, and performance-stable caching solution.
+in the indexing tree.
 
 From testing, under random write, CBD Cache achieves an average latency of 6.80µs, with a max
 latency of 2794µs and a latency standard deviation of 36.45 (under the same test, Bcache has an
@@ -222,7 +216,7 @@ on the backend disk. This ensures that the backend disk maintains crash consiste
 of the `pmem` device, the data on the backend disk remains usable, though crash consistency is maintained while 
 losing the data in the cache. This feature is particularly useful in cloud storage for disaster recovery scenarios.
 
-It is important to note that this approach may lead to cache space efficiency issues if there are many overwrite operations.
+It is important to note that this approach may lead to cache space utilization issues if there are many overwrite operations.
 However, modern file systems, such as Btrfs and F2FS, take wear leveling of the disk into account, so they tend
 to avoid writing repeatedly to the same area. This means that there will not be a large number of overwrite writes
 for the disk. Additionally, modern databases, especially those using LSM engines, rarely perform overwrite operations.
@@ -230,10 +224,10 @@ for the disk. Additionally, modern databases, especially those using LSM engines
 Additionally, there is an entry on the TODO list to provide a parameter backend_consistency=false to allow users to achieve
 better cache space utilization. That depends on how urgent the requirment is.
 
-### 2.6 specified cache space for each disk
+### 2.6 cache space for each disk is configurable
 For each backend, when enabling caching, the `cache_size` parameter must be specified. This is different from `bcache`,
 where all backing devices can dynamically share the cache space within a single cache device. This improves cache utilization
-by achieving optimal efficiency through time-sharing. However, this can lead to an issue where cache behavior becomes unpredictable.
+by achieving optimal utilization through time-sharing. However, this can lead to an issue where cache behavior becomes unpredictable.
 In enterprise applications, it's important to have a more precise understanding of the performance of each disk.
 When multiple disks dynamically share the cache, the exact amount of cache each disk receives becomes uncertain. `cbd cache` assigns
 a dedicated cache space for each disk, ensuring that the cache is exclusive and not affected by others, making the cache behavior more predictable.
