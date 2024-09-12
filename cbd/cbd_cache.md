@@ -94,7 +94,7 @@ Further comparative results for various scenarios are shown in the table below.
 |  bs=1M     |  493.57us  |   623.31us |    233.48us |   246.56us |
 +------------+------------+------------+-------------+------------+
 ```
-### 3.2 multi-queue and multi cache tree (high iops)
+### 2.2 multi-queue and multi cache tree (high iops)
 For persistent memory, the hardware concurrency is very high. If an indexing tree is used to manage space indexing,
 the indexing will become a bottleneck for concurrency.
 
@@ -126,7 +126,7 @@ More detailed comparison results are as follows:
 |  numjobs=32|  1418989   |   214447   |   2892710   |    1361308 |
 +------------+------------+------------+-------------+------------+
 ```
-### 3.3 better performance stablility (less stdev)
+### 2.3 better performance stablility (less stdev)
 CBD Cache, through a streamlined design, simplifies and makes the IO process more controllable,
 which allows for stable performance output.
 
@@ -203,13 +203,13 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   cbd0: ios=0/1280334, sectors=0/10242672, merge=0/0, ticks=0/0, in_queue=0, util=43.07%
 ```
-### 3.4 no need of formating for your existing disk
+### 2.4 no need of formating for your existing disk
 As a lightweight block storage caching technology, `cbd cache` does not require storing metadata on backend disk.
 This allows users to easily add caching to existing disks without the need for any formatting operations and data
 migration. They can also easily stop using the `cbd cache` without complications, The backend disk can be used 
 independently as a raw disk.
 
-### 3.5 backend device is crash-consistency
+### 2.5 backend device is crash-consistency
 The writeback mechanism of `cbd cache` strictly follows a log-structured approach when writeback data. 
 Even if dirty cache data is overwritten by new data (e.g., the old data from 0-4K is A, and new data 
 overwrites 0-4K with B), the old data A is writeback first, followed by writeback the new data B to overwrite 
@@ -227,7 +227,7 @@ maintain backend consistency. If there is strong requirement, we can certainly o
 allowing users to opt out of maintaining backend crash consistency. This would optimize the handling of cache overwrite
 scenarios, which is technically feasible.
 
-### 3.6 specified cache space for each disk
+### 2.6 specified cache space for each disk
 For each backend, when enabling caching, the `cache_size` parameter must be specified. This is different from `bcache`,
 where all backing devices can dynamically share the cache space within a single cache device. This improves cache utilization
 by achieving optimal efficiency through time-sharing. However, this can lead to an issue where cache behavior becomes unpredictable.
