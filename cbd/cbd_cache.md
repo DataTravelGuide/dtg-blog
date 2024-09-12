@@ -13,7 +13,7 @@ such as multi-cache tree structures and atomic insertion of cached data.
 
 **Note**: `cbd cache` is not intended to replace your `bcache`. Instead, it offers an alternative
  solution specifically suited for scenarios where you want to use persistent memory devices
- as block device cache.
+ as block device cache. 
  
 Another caching technique for accessing persistent memory using DAX is **dm-writeback**,
 but it is designed for scenarios based on **device-mapper**. On the other hand, **cbd cache**
@@ -134,6 +134,11 @@ For example, in CBD Cache, the writeback does not need to walk through the index
 meaning that the writeback process will not suffer from increased IO latency due to conflict
 in the indexing tree. In contrast, Bcache's writeback process needs to traverse the indexing
 tree to find the dirty keys before performing the writeback.
+
+Bcache provides users with a rich set of mechanisms and parameters, which is great.
+However, with such rich functionality inevitably comes increased complexity. CBD Cache,
+on the other hand, is designed specifically for PMEM scenarios, with a simple design and implementation,
+aiming to provide a low-latency, high-concurrency, and performance-stable caching solution.
 
 From testing, under random write, CBD Cache achieves an average latency of 6.80µs, with a max
 latency of 2794µs and a latency standard deviation of 36.45 (under the same test, Bcache has an
