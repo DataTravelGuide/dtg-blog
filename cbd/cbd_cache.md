@@ -222,10 +222,8 @@ However, modern file systems, such as Btrfs and F2FS, take wear leveling of the 
 to avoid writing repeatedly to the same area. This means that there will not be a large number of overwrite writes
 for the disk. Additionally, modern databases, especially those using LSM engines, rarely perform overwrite operations.
 
-Additionally, there is an entry on the TODO list regarding providing an option for users to choose whether to
-maintain backend consistency. If there is strong requirement, we can certainly offer this parameter in the future,
-allowing users to opt out of maintaining backend crash consistency. This would optimize the handling of cache overwrite
-scenarios, which is technically feasible.
+Additionally, there is an entry on the TODO list to provide a parameter backend_consistency=false to allow users to achieve
+better cache space utilization. That depends on how urgent the requirment is.
 
 ### 2.6 specified cache space for each disk
 For each backend, when enabling caching, the `cache_size` parameter must be specified. This is different from `bcache`,
