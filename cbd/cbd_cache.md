@@ -225,7 +225,7 @@ Additionally, there is an entry on the TODO list to provide a parameter backend_
 better cache space utilization. That depends on how urgent the requirment is.
 
 ### 2.6 cache space for each disk is configurable
-For each backend, when enabling caching, the `cache_size` parameter must be specified. This is different from `bcache`,
+For each backend, when enabling caching, we can specify cache space size for this backend. This is different from `bcache`,
 where all backing devices can dynamically share the cache space within a single cache device. This improves cache utilization
 by achieving optimal utilization through time-sharing. However, this can lead to an issue where cache behavior becomes unpredictable.
 In enterprise applications, it's important to have a more precise understanding of the performance of each disk.
