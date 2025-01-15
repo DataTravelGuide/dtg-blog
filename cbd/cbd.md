@@ -101,7 +101,7 @@ V3 patchset:
 
 ## cbd userspace tool
 
-The CBD user-space command is a subcommand in the ndctl project and is currently under development.
+The CBD user-space command cbdctrl to manage cbd resources.
 
 [cbd userspace tool](https://github.com/DataTravelGuide/ndctl)
 
