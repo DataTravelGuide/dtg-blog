@@ -3,7 +3,7 @@ layout: default
 ---
 
 # PCache (Persistent memory as cache for block device)
-[PCache](pcache/pcache.md)
+[PCache](pcache/pcache_index.md)
 
 <br><br>
 
