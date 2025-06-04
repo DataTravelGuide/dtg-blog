@@ -1,6 +1,11 @@
 # PCache RFC V2
 
-This document summarizes the design of **dm-pcache**, a device mapper target that turns a persistent memory (pmem) device into a write‑back cache for a slower block device.
+This document summarizes **dm-pcache** RFC v2.  The most notable change from
+[RFC v1](https://lore.kernel.org/lkml/20250414014505.20477-1-dongsheng.yang@linux.dev/)
+is that the cache has been ported to the **Device Mapper** framework and is now
+exposed as a standard DM target.  The code lives under
+`drivers/md/dm-pcache/` in the kernel tree and lets a persistent memory (pmem)
+region act as a write-back cache in front of a slower block device.
 
 ## Key features
 - Write‑back caching (current mode)
@@ -10,6 +15,22 @@ This document summarizes the design of **dm-pcache**, a device mapper target tha
 - Multi‑tree indexing (per CPU backend) for high parallelism
 - Pure DAX I/O path with no extra BIO round‑trips
 - Log‑structured write‑back preserving backend crash consistency
+
+## Architecture overview
+The implementation is composed of three layers:
+
+1. **pmem access layer** – reads use `copy_mc_to_kernel()` so media errors are
+   detected; writes go through `memcpy_flushcache()` to ensure durability on
+   persistent memory.
+2. **cache-logic layer** – manages 16&nbsp;MiB segments with log‑structured
+   allocation, maintains multiple RB-tree indexes for parallelism, verifies data
+   CRCs, handles background write‑back and garbage collection, and replays
+   key-sets from `key_tail` after a crash.
+3. **dm-pcache target integration** – exposes a table line
+   ``pcache <pmem_dev> <origin_dev> writeback <true|false>`` and advertises
+   support for `PREFLUSH`/`FUA`.  Discard and dynamic reload are not yet
+   implemented.  Runtime GC control is available via
+   ``dmsetup message <dev> 0 gc_percent <0-90>``.
 
 ## Status information
 `dmsetup status <dev>` prints:
@@ -53,8 +74,26 @@ dmsetup message <dev> 0 gc_percent <0-90>
 - Discard support planned
 
 ## Example workflow
-1. Create the device with `dmsetup`
-2. Format and mount a filesystem
-3. Tune the GC threshold
-4. Observe status with `dmsetup status`
-5. Unmount and remove the device
+```bash
+# 1. create devices
+pmem=/dev/pmem0
+ssd=/dev/sdb
+
+# 2. map a pcache device
+dmsetup create pcache_sdb --table \
+  "0 $(blockdev --getsz $ssd) pcache $pmem $ssd writeback true"
+
+# 3. format and mount
+mkfs.ext4 /dev/mapper/pcache_sdb
+mount /dev/mapper/pcache_sdb /mnt
+
+# 4. tune GC to 80%
+dmsetup message pcache_sdb 0 gc_percent 80
+
+# 5. monitor status
+watch -n1 'dmsetup status pcache_sdb'
+
+# 6. shutdown
+umount /mnt
+dmsetup remove pcache_sdb
+```
