@@ -1,0 +1,68 @@
+[stdlog] 2025-06-05 10:58:59,958 avocado.test INFO | INIT 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-06-05 10:58:59,963 avocado.test DEBUG| PARAMS (key=timeout, path=*, default=None) => None
+[stdlog] 2025-06-05 10:58:59,963 avocado.test DEBUG| Test metadata:
+[stdlog] 2025-06-05 10:58:59,964 avocado.test DEBUG|   filename: /workspace/dtg-tests/pcache.py
+[stdlog] 2025-06-05 10:58:59,964 avocado.test DEBUG|   teststmpdir: /var/tmp/avocado_9dkt_5x8
+[stdlog] 2025-06-05 10:58:59,966 avocado.test INFO | START 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-06-05 10:58:59,967 avocado.test INFO | env_dict: {'linux_path': '/workspace/linux_compile', 'cache_dev0': '/dev/pmem0', 'cache_dev1': '/dev/pmem1', 'gc_percent': '0', 'data_crc': 'false', 'test_script': './pcache.py.data/pcache_misc.sh'}
+[stdlog] 2025-06-05 10:58:59,967 avocado.test DEBUG| PARAMS (key=test_script, path=*, default=None) => './pcache.py.data/pcache_misc.sh'
+[stdout] /workspace/dtg-tests
+[stdout] 
+[stdout]                                                                           
+[stdout] The operation has completed successfully.
+[stdout] Creating filesystem with 2621440 4k blocks and 655360 inodes
+[stdout] Filesystem UUID: 58ee9216-873b-4129-ac7b-776816627279
+[stdout] Superblock backups stored on blocks: 
+[stdout] 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+[stdout] 
+[stdout] Allocating group tables:  0/80     done                            
+[stdout] Writing inode tables:  0/80     done                            
+[stdout] Creating journal (16384 blocks): done
+[stdout] Writing superblocks and filesystem accounting information:  0/80     done
+[stdout] 
+[stdout] pcachetest: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=sync, iodepth=1
+[stdout] fio-3.36
+[stdout] Starting 1 process
+[stdout] fio: pid=3163556, err=5/file:io_u.c:1896, func=io_u error, error=Input/output error
+[stdout] 
+[stdout] pcachetest: (groupid=0, jobs=1): err= 5 (file:io_u.c:1896, func=io_u error, error=Input/output error): pid=3163556: Thu Jun  5 10:59:05 2025
+[stdout]   write: IOPS=94.3k, BW=368MiB/s (386MB/s)(558MiB/1514msec); 0 zone resets
+[stdout]     clat (usec): min=4, max=892, avg= 7.58, stdev= 6.94
+[stdout]      lat (usec): min=4, max=892, avg= 7.73, stdev= 7.00
+[stdout]     clat percentiles (usec):
+[stdout]      |  1.00th=[    5],  5.00th=[    5], 10.00th=[    5], 20.00th=[    5],
+[stdout]      | 30.00th=[    5], 40.00th=[    5], 50.00th=[    5], 60.00th=[    6],
+[stdout]      | 70.00th=[    8], 80.00th=[   12], 90.00th=[   13], 95.00th=[   15],
+[stdout]      | 99.00th=[   30], 99.50th=[   39], 99.90th=[   57], 99.95th=[   68],
+[stdout]      | 99.99th=[  163]
+[stdout]    bw (  KiB/s): min=338680, max=405528, per=100.00%, avg=380760.00, stdev=36632.54, samples=3
+[stdout]    iops        : min=84670, max=101382, avg=95190.00, stdev=9158.13, samples=3
+[stdout]   lat (usec)   : 10=75.33%, 20=21.79%, 50=2.71%, 100=0.15%, 250=0.01%
+[stdout]   lat (usec)   : 500=0.01%, 750=0.01%, 1000=0.01%
+[stdout]   cpu          : usr=17.12%, sys=72.64%, ctx=24, majf=0, minf=19
+[stdout]   IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+[stdout]      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      complete  : 0=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      issued rwts: total=0,142786,0,0 short=0,0,0,0 dropped=0,0,0,0
+[stdout]      latency   : target=0, window=0, percentile=100.00%, depth=1
+[stdout] 
+[stdout] Run status group 0 (all jobs):
+[stdout]   WRITE: bw=368MiB/s (386MB/s), 368MiB/s-368MiB/s (386MB/s-386MB/s), io=558MiB (585MB), run=1514-1514msec
+[stdout] 
+[stdout]                                                                           
+[stdout] The operation has completed successfully.
+[stdout] Creating filesystem with 2621440 4k blocks and 655360 inodes
+[stdout] Filesystem UUID: 09c54619-ebbc-4bad-a0a2-5b68e47f1db1
+[stdout] Superblock backups stored on blocks: 
+[stdout] 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+[stdout] 
+[stdout] Allocating group tables:  0/80     done                            
+[stdout] Writing inode tables:  0/80     done                            
+[stdout] Creating journal (16384 blocks): done
+[stdout] Writing superblocks and filesystem accounting information:  0/80     done
+[stdout] 
+[stdout] 
+[stdlog] 2025-06-05 10:59:20,211 avocado.test INFO | pcache script completed successfully
+[stdlog] 2025-06-05 10:59:20,211 avocado.test INFO | pcache test finished.
+[stdlog] 2025-06-05 10:59:20,212 avocado.test INFO | PASS 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-06-05 10:59:20,212 avocado.test INFO | 

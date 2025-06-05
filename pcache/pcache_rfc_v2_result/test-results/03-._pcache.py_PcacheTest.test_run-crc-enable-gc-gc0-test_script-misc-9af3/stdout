@@ -1,0 +1,57 @@
+/workspace/dtg-tests
+
+                                                                          
+The operation has completed successfully.
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: a771973a-3a8e-4465-8ed1-e813aad84217
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables:  0/80     done                            
+Writing inode tables:  0/80     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/80     done
+
+pcachetest: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=sync, iodepth=1
+fio-3.36
+Starting 1 process
+fio: pid=1643361, err=5/file:io_u.c:1896, func=io_u error, error=Input/output error
+
+pcachetest: (groupid=0, jobs=1): err= 5 (file:io_u.c:1896, func=io_u error, error=Input/output error): pid=1643361: Thu Jun  5 09:50:21 2025
+  write: IOPS=73.2k, BW=286MiB/s (300MB/s)(430MiB/1505msec); 0 zone resets
+    clat (usec): min=5, max=1319, avg=10.57, stdev= 9.34
+     lat (usec): min=5, max=1319, avg=10.70, stdev= 9.38
+    clat percentiles (usec):
+     |  1.00th=[    7],  5.00th=[    7], 10.00th=[    8], 20.00th=[    8],
+     | 30.00th=[    8], 40.00th=[    9], 50.00th=[    9], 60.00th=[    9],
+     | 70.00th=[   10], 80.00th=[   13], 90.00th=[   19], 95.00th=[   20],
+     | 99.00th=[   34], 99.50th=[   41], 99.90th=[   58], 99.95th=[   70],
+     | 99.99th=[  239]
+   bw (  KiB/s): min=183576, max=385520, per=100.00%, avg=293810.67, stdev=102238.62, samples=3
+   iops        : min=45894, max=96380, avg=73452.67, stdev=25559.66, samples=3
+  lat (usec)   : 10=73.98%, 20=22.48%, 50=3.36%, 100=0.16%, 250=0.01%
+  lat (usec)   : 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%
+  cpu          : usr=16.76%, sys=73.87%, ctx=27, majf=0, minf=19
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,110180,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=286MiB/s (300MB/s), 286MiB/s-286MiB/s (300MB/s-300MB/s), io=430MiB (451MB), run=1505-1505msec
+
+                                                                          
+The operation has completed successfully.
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: ca63ce21-a6cf-43ef-a13b-40d869517e58
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables:  0/80     done                            
+Writing inode tables:  0/80     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/80     done
+
+
