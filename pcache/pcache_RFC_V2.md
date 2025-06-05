@@ -97,3 +97,7 @@ watch -n1 'dmsetup status pcache_sdb'
 umount /mnt
 dmsetup remove pcache_sdb
 ```
+
+## Test result
+
+We used the `pcache` test suite from **dtg-tests** to validate the target in various scenarios. The tests create pcache devices with different parameters, verify data read and write correctness and run xfstests under each configuration. Detailed results are available in the [test-result](./pcache_rfc_v2_result/results.html).
