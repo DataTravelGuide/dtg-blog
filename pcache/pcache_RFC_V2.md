@@ -7,6 +7,9 @@ exposed as a standard DM target.  The code lives under
 `drivers/md/dm-pcache/` in the kernel tree and lets a persistent memory (pmem)
 region act as a write-back cache in front of a slower block device.
 
+## Mail
+https://lore.kernel.org/lkml/20250605142306.1930831-1-dongsheng.yang@linux.dev/
+
 ## Key features
 - Write‑back caching (current mode)
 - 16&nbsp;MiB segments on the pmem cache device
