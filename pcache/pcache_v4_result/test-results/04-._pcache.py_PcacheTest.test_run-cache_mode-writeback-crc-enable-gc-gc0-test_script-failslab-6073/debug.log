@@ -1,0 +1,329 @@
+[stdlog] 2025-08-03 13:55:44,494 avocado.test INFO | INIT 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-03 13:55:44,498 avocado.test DEBUG| PARAMS (key=timeout, path=*, default=None) => None
+[stdlog] 2025-08-03 13:55:44,498 avocado.test DEBUG| Test metadata:
+[stdlog] 2025-08-03 13:55:44,499 avocado.test DEBUG|   filename: /workspace/dtg-tests/pcache.py
+[stdlog] 2025-08-03 13:55:44,499 avocado.test DEBUG|   teststmpdir: /var/tmp/avocado_g1ec7hjc
+[stdlog] 2025-08-03 13:55:44,501 avocado.test INFO | START 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-03 13:55:44,502 avocado.test DEBUG| PARAMS (key=striped, path=*, default=false) => False
+[stdlog] 2025-08-03 13:55:44,502 avocado.test DEBUG| PARAMS (key=gcov, path=*, default=false) => True
+[stdlog] 2025-08-03 13:55:44,502 avocado.test INFO | env_dict: {'linux_path': '/workspace/linux_compile', 'covdir': '/workspace/datatravelguide/covdir', 'gcov': 'true', 'cache_dev0': '/dev/pmem0', 'cache_dev1': '/dev/pmem1', 'cache_dev2': '/dev/pmem2', 'cache_dev3': '/dev/pmem3', 'striped': 'false', 'data_dev0': '/dev/ram0p1', 'data_dev1': '/dev/ram0p2', 'cache_mode': 'writeback', 'gc_percent': '0', 'data_crc': 'true', 'test_script': './pcache.py.data/pcache_failslab.sh'}
+[stdlog] 2025-08-03 13:55:44,503 avocado.test DEBUG| PARAMS (key=test_script, path=*, default=None) => './pcache.py.data/pcache_failslab.sh'
+[stdout] /workspace/dtg-tests
+[stdout] /workspace/linux_compile /workspace/dtg-tests
+[stdout] patching file drivers/md/dm-pcache/backing_dev.c
+[stdout] patching file drivers/md/dm-pcache/cache_key.c
+[stdout] make[1]: Entering directory '/workspace/linux_compile/drivers/md/dm-pcache'
+[stdout]   CC [M]  backing_dev.o
+[stdout]   CC [M]  cache_key.o
+[stdout]   LD [M]  dm-pcache.o
+[stdout]   MODPOST Module.symvers
+[stdout]   CC [M]  dm-pcache.mod.o
+[stdout]   LD [M]  dm-pcache.ko
+[stdout] make[1]: Leaving directory '/workspace/linux_compile/drivers/md/dm-pcache'
+[stdout] /workspace/dtg-tests
+[stdout] meta-data=/dev/mapper/pcache_ram0p1 isize=512    agcount=4, agsize=655360 blks
+[stdout]          =                       sectsz=512   attr=2, projid32bit=1
+[stdout]          =                       crc=1        finobt=1, sparse=1, rmapbt=1
+[stdout]          =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+[stdout] data     =                       bsize=4096   blocks=2621440, imaxpct=25
+[stdout]          =                       sunit=0      swidth=0 blks
+[stdout] naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+[stdout] log      =internal log           bsize=4096   blocks=16384, version=2
+[stdout]          =                       sectsz=512   sunit=0 blks, lazy-count=1
+[stdout] realtime =none                   extsz=4096   blocks=0, rtextents=0
+[stdout] meta-data=/dev/mapper/pcache_ram0p1 isize=512    agcount=4, agsize=655360 blks
+[stdout]          =                       sectsz=512   attr=2, projid32bit=1
+[stdout]          =                       crc=1        finobt=1, sparse=1, rmapbt=1
+[stdout]          =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+[stdout] data     =                       bsize=4096   blocks=2621440, imaxpct=25
+[stdout]          =                       sunit=0      swidth=0 blks
+[stdout] naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+[stdout] log      =internal log           bsize=4096   blocks=16384, version=2
+[stdout]          =                       sectsz=512   sunit=0 blks, lazy-count=1
+[stdout] realtime =none                   extsz=4096   blocks=0, rtextents=0
+[stdout] FSTYP         -- xfs (non-debug)
+[stdout] PLATFORM      -- Linux/x86_64 ubuntu-22-04-720 6.16.0+ #107 SMP PREEMPT_DYNAMIC Sun Aug  3 12:39:53 UTC 2025
+[stdout] MKFS_OPTIONS  -- -f /dev/mapper/pcache_ram0p2
+[stdout] MOUNT_OPTIONS -- /dev/mapper/pcache_ram0p2 /mnt/scratch
+[stdout] 
+[stdout] generic/001 10s ...  10s
+[stdout] Ran: generic/001
+[stdout] Passed all 1 tests
+[stdout] 
+[stdout] ==> Done. See dmesg for failslab traces.
+[stdout] /workspace/linux_compile /workspace/xfstests
+[stdout] patching file drivers/md/dm-pcache/backing_dev.c
+[stdout] patching file drivers/md/dm-pcache/cache_key.c
+[stdout] make[1]: Entering directory '/workspace/linux_compile/drivers/md/dm-pcache'
+[stdout]   CLEAN   Module.symvers
+[stdout] make[1]: Leaving directory '/workspace/linux_compile/drivers/md/dm-pcache'
+[stdout] make[1]: Entering directory '/workspace/linux_compile/drivers/md/dm-pcache'
+[stdout]   CC [M]  dm_pcache.o
+[stdout]   CC [M]  cache_dev.o
+[stdout]   CC [M]  segment.o
+[stdout]   CC [M]  backing_dev.o
+[stdout]   CC [M]  cache.o
+[stdout]   CC [M]  cache_gc.o
+[stdout]   CC [M]  cache_writeback.o
+[stdout]   CC [M]  cache_segment.o
+[stdout]   CC [M]  cache_key.o
+[stdout]   CC [M]  cache_req.o
+[stdout]   LD [M]  dm-pcache.o
+[stdout]   MODPOST Module.symvers
+[stdout]   CC [M]  dm-pcache.mod.o
+[stdout]   CC [M]  .module-common.o
+[stdout]   LD [M]  dm-pcache.ko
+[stdout] make[1]: Leaving directory '/workspace/linux_compile/drivers/md/dm-pcache'
+[stdout] /workspace/xfstests
+[stdout] 
+[stdout] + : /workspace/datatravelguide/covdir
+[stdout] + : true
+[stdout] + : /workspace/linux_compile
+[stdout] + : /dev/pmem0
+[stdout] + : /dev/ram0p1
+[stdout] + : /dev/ram0p2
+[stdout] + : writeback
+[stdout] + : true
+[stdout] ++ basename /dev/ram0p1
+[stdout] + dm_name0=pcache_ram0p1
+[stdout] ++ basename /dev/ram0p2
+[stdout] + dm_name1=pcache_ram0p2
+[stdout] +++ dirname ./pcache.py.data/pcache_failslab.sh
+[stdout] ++ realpath ./pcache.py.data/0001-dm-pcache-set-min_nr-of-mempool-to-0.patch
+[stdout] + PATCH_FILE=/workspace/dtg-tests/pcache.py.data/0001-dm-pcache-set-min_nr-of-mempool-to-0.patch
+[stdout] + DBG=/sys/kernel/debug/failslab
+[stdout] + PROB=100
+[stdout] + INTERVAL=2
+[stdout] + TIMES=100
+[stdout] + VERBOSE=1
+[stdout] + DMESG_LOG=/tmp/pcache_failslab_dmesg.log
+[stdout] + sudo dmesg -c
+[stdout] + sudo dmsetup remove pcache_ram0p1
+[stdout] + true
+[stdout] + sudo dmsetup remove pcache_ram0p2
+[stdout] + true
+[stdout] + pcache_rmmod
+[stdout] + dump_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] ++ date +%s
+[stdout] + ts=1754229344
+[stdout] + mkdir -p /workspace/datatravelguide/covdir
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229344 ';'
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229344 ';'
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo rmmod dm-pcache
+[stdout] + true
+[stdout] + pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00221728 s, 473 MB/s
+[stdout] ++ sudo blockdev --getsz /dev/ram0p1
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc true'
+[stdout] + sudo dmsetup remove pcache_ram0p1_probe
+[stdout] + trap cleanup EXIT
+[stdout] + apply_patch
+[stdout] + pushd /workspace/linux_compile
+[stdout] + patch -Np1
+[stdout] + make M=drivers/md/dm-pcache/
+[stdout] + popd
+[stdout] + configure_failslab
+[stdout] + sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/probability'
+[stdout] + sudo sh -c 'echo 2 > /sys/kernel/debug/failslab/interval'
+[stdout] + sudo sh -c 'echo 1 > /sys/kernel/debug/failslab/verbose'
+[stdout] + sudo sh -c 'echo Y > /sys/kernel/debug/failslab/cache-filter'
+[stdout] + sudo sh -c 'echo N > /sys/kernel/debug/failslab/ignore-gfp-wait'
+[stdout] + sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/times'
+[stdout] + bash ./pcache.py.data/pcache.sh
+[stdout] + : /workspace/datatravelguide/covdir
+[stdout] + : true
+[stdout] + : false
+[stdout] + : true
+[stdout] + : 0
+[stdout] + : writeback
+[stdout] + : /dev/ram0p1
+[stdout] + : /dev/ram0p2
+[stdout] + [[ false == \t\r\u\e ]]
+[stdout] ++ basename /dev/ram0p1
+[stdout] + dm_name0=pcache_ram0p1
+[stdout] ++ basename /dev/ram0p2
+[stdout] + dm_name1=pcache_ram0p2
+[stdout] + sudo dmsetup remove pcache_ram0p1
+[stdout] + true
+[stdout] + sudo dmsetup remove pcache_ram0p2
+[stdout] + true
+[stdout] + pcache_rmmod
+[stdout] + dump_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] ++ date +%s
+[stdout] + ts=1754229352
+[stdout] + mkdir -p /workspace/datatravelguide/covdir
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229352 ';'
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229352 ';'
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo rmmod dm-pcache
+[stdout] + pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00225554 s, 465 MB/s
+[stdout] + dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00228249 s, 459 MB/s
+[stdout] ++ sudo blockdev --getsz /dev/ram0p1
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc true'
+[stdout] + sudo dmsetup remove pcache_ram0p1_probe
+[stdout] ++ sudo blockdev --getsz /dev/ram0p1
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc true'
+[stdout] ++ sudo blockdev --getsz /dev/ram0p2
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p2 --table '0 20971520 pcache /dev/pmem1 /dev/ram0p2 4 cache_mode writeback data_crc true'
+[stdout] + [[ -n 0 ]]
+[stdout] + sudo dmsetup message pcache_ram0p1 0 gc_percent 0
+[stdout] + sudo dmsetup message pcache_ram0p2 0 gc_percent 0
+[stdout] + sudo mkfs.xfs -f /dev/mapper/pcache_ram0p1
+[stdout] + sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_cache_key/failslab'
+[stdout] + sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_backing_dev_req/failslab'
+[stdout] + sudo sh -c 'echo "file cache_key.c +p" > /sys/kernel/debug/dynamic_debug/control'
+[stdout] + sudo sh -c 'echo "file cache_req.c +p" > /sys/kernel/debug/dynamic_debug/control'
+[stdout] + dd if=/dev/mapper/pcache_ram0p1 of=/dev/null bs=4M count=100 iflag=direct
+[stdout] 100+0 records in
+[stdout] 100+0 records out
+[stdout] 419430400 bytes (419 MB, 400 MiB) copied, 1.07909 s, 389 MB/s
+[stdout] + reset_pmem
+[stdout] + dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00236309 s, 444 MB/s
+[stdout] + sync
+[stdout] + bash ./pcache.py.data/pcache.sh
+[stdout] + : /workspace/datatravelguide/covdir
+[stdout] + : true
+[stdout] + : false
+[stdout] + : true
+[stdout] + : 0
+[stdout] + : writeback
+[stdout] + : /dev/ram0p1
+[stdout] + : /dev/ram0p2
+[stdout] + [[ false == \t\r\u\e ]]
+[stdout] ++ basename /dev/ram0p1
+[stdout] + dm_name0=pcache_ram0p1
+[stdout] ++ basename /dev/ram0p2
+[stdout] + dm_name1=pcache_ram0p2
+[stdout] + sudo dmsetup remove pcache_ram0p1
+[stdout] + sudo dmsetup remove pcache_ram0p2
+[stdout] + pcache_rmmod
+[stdout] + dump_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] ++ date +%s
+[stdout] + ts=1754229355
+[stdout] + mkdir -p /workspace/datatravelguide/covdir
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229355 ';'
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229355 ';'
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo rmmod dm-pcache
+[stdout] + pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00204892 s, 512 MB/s
+[stdout] + dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00220703 s, 475 MB/s
+[stdout] ++ sudo blockdev --getsz /dev/ram0p1
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc true'
+[stdout] + sudo dmsetup remove pcache_ram0p1_probe
+[stdout] ++ sudo blockdev --getsz /dev/ram0p1
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc true'
+[stdout] ++ sudo blockdev --getsz /dev/ram0p2
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p2 --table '0 20971520 pcache /dev/pmem1 /dev/ram0p2 4 cache_mode writeback data_crc true'
+[stdout] + [[ -n 0 ]]
+[stdout] + sudo dmsetup message pcache_ram0p1 0 gc_percent 0
+[stdout] + sudo dmsetup message pcache_ram0p2 0 gc_percent 0
+[stdout] + sudo mkfs.xfs -f /dev/mapper/pcache_ram0p1
+[stdout] + reset_failslab
+[stdout] + sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/probability'
+[stdout] + sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/interval'
+[stdout] + sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/verbose'
+[stdout] + sudo sh -c 'echo N > /sys/kernel/debug/failslab/cache-filter'
+[stdout] + sudo sh -c 'echo Y > /sys/kernel/debug/failslab/ignore-gfp-wait'
+[stdout] + sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/times'
+[stdout] + sudo sh -c 'echo 0 > /sys/kernel/slab/pcache_cache_key/failslab'
+[stdout] + sudo sh -c 'echo 0 > /sys/kernel/slab/pcache_backing_dev_req/failslab'
+[stdout] + configure_failslab
+[stdout] + sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/probability'
+[stdout] + sudo sh -c 'echo 2 > /sys/kernel/debug/failslab/interval'
+[stdout] + sudo sh -c 'echo 1 > /sys/kernel/debug/failslab/verbose'
+[stdout] + sudo sh -c 'echo Y > /sys/kernel/debug/failslab/cache-filter'
+[stdout] + sudo sh -c 'echo N > /sys/kernel/debug/failslab/ignore-gfp-wait'
+[stdout] + sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/times'
+[stdout] + sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_cache_key/failslab'
+[stdout] + sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_backing_dev_req/failslab'
+[stdout] + sudo sh -c 'echo "file cache_key.c +p" > /sys/kernel/debug/dynamic_debug/control'
+[stdout] + sudo sh -c 'echo "file cache_req.c +p" > /sys/kernel/debug/dynamic_debug/control'
+[stdout] + cd /workspace/xfstests
+[stdout] + ./check generic/001
+[stdout] + sudo dmesg
+[stdout] + grep -q 'allocate pre_alloc_key with GFP_NOIO' /tmp/pcache_failslab_dmesg.log
+[stdout] + grep -q 'allocate pre_alloc_req with GFP_NOIO' /tmp/pcache_failslab_dmesg.log
+[stdout] + echo '==> Done. See dmesg for failslab traces.'
+[stdout] + cleanup
+[stdout] + echo 0
+[stdout] + sudo dmsetup remove pcache_ram0p1
+[stdout] + sudo dmsetup remove pcache_ram0p2
+[stdout] + pcache_rmmod
+[stdout] + dump_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] ++ date +%s
+[stdout] + ts=1754229369
+[stdout] + mkdir -p /workspace/datatravelguide/covdir
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229369 ';'
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754229369 ';'
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo rmmod dm-pcache
+[stdout] + revert_patch
+[stdout] + pushd /workspace/linux_compile
+[stdout] + patch -Rp1
+[stdout] + make M=drivers/md/dm-pcache/ clean
+[stdout] + make M=drivers/md/dm-pcache/
+[stdout] + popd
+[stdout] 
+[stdlog] 2025-08-03 13:56:25,883 avocado.test INFO | pcache script completed successfully
+[stdlog] 2025-08-03 13:56:25,884 avocado.test INFO | pcache test finished.
+[stdlog] 2025-08-03 13:56:25,884 avocado.test INFO | PASS 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-03 13:56:25,884 avocado.test INFO | 

@@ -1,0 +1,74 @@
+[stdlog] 2025-08-03 15:12:02,965 avocado.test INFO | INIT 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-03 15:12:02,969 avocado.test DEBUG| PARAMS (key=timeout, path=*, default=None) => None
+[stdlog] 2025-08-03 15:12:02,970 avocado.test DEBUG| Test metadata:
+[stdlog] 2025-08-03 15:12:02,970 avocado.test DEBUG|   filename: /workspace/dtg-tests/pcache.py
+[stdlog] 2025-08-03 15:12:02,971 avocado.test DEBUG|   teststmpdir: /var/tmp/avocado_g1ec7hjc
+[stdlog] 2025-08-03 15:12:02,973 avocado.test INFO | START 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-03 15:12:02,973 avocado.test DEBUG| PARAMS (key=striped, path=*, default=false) => False
+[stdlog] 2025-08-03 15:12:02,973 avocado.test DEBUG| PARAMS (key=gcov, path=*, default=false) => True
+[stdlog] 2025-08-03 15:12:02,974 avocado.test INFO | env_dict: {'linux_path': '/workspace/linux_compile', 'covdir': '/workspace/datatravelguide/covdir', 'gcov': 'true', 'cache_dev0': '/dev/pmem0', 'cache_dev1': '/dev/pmem1', 'cache_dev2': '/dev/pmem2', 'cache_dev3': '/dev/pmem3', 'striped': 'false', 'data_dev0': '/dev/ram0p1', 'data_dev1': '/dev/ram0p2', 'cache_mode': 'writeonly', 'gc_percent': '80', 'data_crc': 'false', 'test_script': './pcache.py.data/pcache_failslab.sh'}
+[stdlog] 2025-08-03 15:12:02,974 avocado.test DEBUG| PARAMS (key=test_script, path=*, default=None) => './pcache.py.data/pcache_failslab.sh'
+[stdout] /workspace/dtg-tests
+[stdout] cache_mode writeonly not supported, skipping
+[stdout] 
+[stdout] + : /workspace/datatravelguide/covdir
+[stdout] + : true
+[stdout] + : /workspace/linux_compile
+[stdout] + : /dev/pmem0
+[stdout] + : /dev/ram0p1
+[stdout] + : /dev/ram0p2
+[stdout] + : writeonly
+[stdout] + : false
+[stdout] ++ basename /dev/ram0p1
+[stdout] + dm_name0=pcache_ram0p1
+[stdout] ++ basename /dev/ram0p2
+[stdout] + dm_name1=pcache_ram0p2
+[stdout] +++ dirname ./pcache.py.data/pcache_failslab.sh
+[stdout] ++ realpath ./pcache.py.data/0001-dm-pcache-set-min_nr-of-mempool-to-0.patch
+[stdout] + PATCH_FILE=/workspace/dtg-tests/pcache.py.data/0001-dm-pcache-set-min_nr-of-mempool-to-0.patch
+[stdout] + DBG=/sys/kernel/debug/failslab
+[stdout] + PROB=100
+[stdout] + INTERVAL=2
+[stdout] + TIMES=100
+[stdout] + VERBOSE=1
+[stdout] + DMESG_LOG=/tmp/pcache_failslab_dmesg.log
+[stdout] + sudo dmesg -c
+[stdout] + sudo dmsetup remove pcache_ram0p1
+[stdout] + true
+[stdout] + sudo dmsetup remove pcache_ram0p2
+[stdout] + true
+[stdout] + pcache_rmmod
+[stdout] + dump_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] ++ date +%s
+[stdout] + ts=1754233923
+[stdout] + mkdir -p /workspace/datatravelguide/covdir
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754233923 ';'
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754233923 ';'
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo rmmod dm-pcache
+[stdout] + pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00211602 s, 496 MB/s
+[stdout] ++ sudo blockdev --getsz /dev/ram0p1
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeonly data_crc false'
+[stdout] device-mapper: reload ioctl on pcache_ram0p1_probe (252:0) failed: Invalid argument
+[stdout] Command failed.
+[stdout] + echo 'cache_mode writeonly not supported, skipping'
+[stdout] + exit 0
+[stdout] 
+[stdlog] 2025-08-03 15:12:03,883 avocado.test INFO | pcache script completed successfully
+[stdlog] 2025-08-03 15:12:03,883 avocado.test INFO | pcache test finished.
+[stdlog] 2025-08-03 15:12:03,884 avocado.test INFO | PASS 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-03 15:12:03,884 avocado.test INFO | 

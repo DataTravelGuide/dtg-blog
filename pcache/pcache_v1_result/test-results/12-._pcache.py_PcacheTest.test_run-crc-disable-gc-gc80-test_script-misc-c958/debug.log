@@ -1,0 +1,191 @@
+[stdlog] 2025-06-23 11:43:50,396 avocado.test INFO | INIT 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-06-23 11:43:50,401 avocado.test DEBUG| PARAMS (key=timeout, path=*, default=None) => None
+[stdlog] 2025-06-23 11:43:50,401 avocado.test DEBUG| Test metadata:
+[stdlog] 2025-06-23 11:43:50,401 avocado.test DEBUG|   filename: /workspace/dtg-tests/pcache.py
+[stdlog] 2025-06-23 11:43:50,402 avocado.test DEBUG|   teststmpdir: /var/tmp/avocado_ghe74qr4
+[stdlog] 2025-06-23 11:43:50,404 avocado.test INFO | START 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-06-23 11:43:50,404 avocado.test INFO | env_dict: {'linux_path': '/workspace/linux_compile', 'cache_dev0': '/dev/pmem0', 'cache_dev1': '/dev/pmem1', 'data_dev0': '/dev/ram0p1', 'data_dev1': '/dev/ram0p2', 'gc_percent': '80', 'data_crc': 'false', 'test_script': './pcache.py.data/pcache_misc.sh'}
+[stdlog] 2025-06-23 11:43:50,405 avocado.test DEBUG| PARAMS (key=test_script, path=*, default=None) => './pcache.py.data/pcache_misc.sh'
+[stdout] /workspace/dtg-tests
+[stdout] DEBUG: case 1 - invalid cache mode should fail
+[stdout] DEBUG: case 2 - invalid data_crc should fail
+[stdout] DEBUG: case 3 - empty cache_mode should fail
+[stdout] DEBUG: case 4 - empty data_crc should fail
+[stdout] DEBUG: case 5 - create without optional arguments
+[stdout] DEBUG: case 6 - cache_mode only
+[stdout] DEBUG: case 7 - data_crc only
+[stdout] DEBUG: case 8 - invalid number_of_optional_arguments should fail
+[stdout] DEBUG: case 9 - basic create and gc_percent message checks
+[stdout] DEBUG: case 10 - data persistence after remove and recreate
+[stdout] Creating filesystem with 2621440 4k blocks and 655360 inodes
+[stdout] Filesystem UUID: a099ce2e-4a8d-4ebc-bb44-77e10032f7a6
+[stdout] Superblock backups stored on blocks: 
+[stdout] 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+[stdout] 
+[stdout] Allocating group tables:  0/80     done                            
+[stdout] Writing inode tables:  0/80     done                            
+[stdout] Creating journal (16384 blocks): done
+[stdout] Writing superblocks and filesystem accounting information:  0/80     done
+[stdout] 
+[stdout] DEBUG: case 11 - remove pcache while fio running
+[stdout] pcachetest: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+[stdout] fio-3.36
+[stdout] Starting 1 process
+[stdout] fio: pid=2037934, err=5/file:io_u.c:1896, func=io_u error, error=Input/output error
+[stdout] 
+[stdout] pcachetest: (groupid=0, jobs=1): err= 5 (file:io_u.c:1896, func=io_u error, error=Input/output error): pid=2037934: Mon Jun 23 11:43:56 2025
+[stdout]   write: IOPS=31.2k, BW=122MiB/s (128MB/s)(25.8MiB/212msec); 0 zone resets
+[stdout]     slat (usec): min=5, max=415, avg=13.22, stdev= 9.94
+[stdout]     clat (nsec): min=1061, max=156117, avg=2168.26, stdev=2384.05
+[stdout]      lat (usec): min=7, max=421, avg=15.39, stdev=10.98
+[stdout]     clat percentiles (nsec):
+[stdout]      |  1.00th=[  1096],  5.00th=[  1144], 10.00th=[  1176], 20.00th=[  1240],
+[stdout]      | 30.00th=[  1448], 40.00th=[  1640], 50.00th=[  1832], 60.00th=[  2008],
+[stdout]      | 70.00th=[  2352], 80.00th=[  2992], 90.00th=[  3280], 95.00th=[  4192],
+[stdout]      | 99.00th=[  4576], 99.50th=[  5344], 99.90th=[ 23936], 99.95th=[ 27264],
+[stdout]      | 99.99th=[156672]
+[stdout]   lat (usec)   : 2=59.67%, 4=32.09%, 10=7.89%, 20=0.18%, 50=0.14%
+[stdout]   lat (usec)   : 250=0.02%
+[stdout]   cpu          : usr=10.90%, sys=41.71%, ctx=5, majf=0, minf=19
+[stdout]   IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+[stdout]      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      complete  : 0=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      issued rwts: total=0,6613,0,0 short=0,0,0,0 dropped=0,0,0,0
+[stdout]      latency   : target=0, window=0, percentile=100.00%, depth=1
+[stdout] 
+[stdout] Run status group 0 (all jobs):
+[stdout]   WRITE: bw=122MiB/s (128MB/s), 122MiB/s-122MiB/s (128MB/s-128MB/s), io=25.8MiB (27.1MB), run=212-212msec
+[stdout] DEBUG: case 12 - dmsetup create should fail after data_crc change
+[stdout] DEBUG: case 13 - flush cached data and verify persistence
+[stdout] Creating filesystem with 2621440 4k blocks and 655360 inodes
+[stdout] Filesystem UUID: d8dd2074-00e3-4fcf-b683-ed67c46d2acc
+[stdout] Superblock backups stored on blocks: 
+[stdout] 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+[stdout] 
+[stdout] Allocating group tables:  0/80     done                            
+[stdout] Writing inode tables:  0/80     done                            
+[stdout] Creating journal (16384 blocks): done
+[stdout] Writing superblocks and filesystem accounting information:  0/80     done
+[stdout] 
+[stdout] DEBUG: case 14 - verify data consistency under heavy IO
+[stdout] Creating filesystem with 2621440 4k blocks and 655360 inodes
+[stdout] Filesystem UUID: 0ed1bcba-57e6-4073-97c4-2462c0f72ea0
+[stdout] Superblock backups stored on blocks: 
+[stdout] 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+[stdout] 
+[stdout] Allocating group tables:  0/80     done                            
+[stdout] Writing inode tables:  0/80     done                            
+[stdout] Creating journal (16384 blocks): done
+[stdout] Writing superblocks and filesystem accounting information:  0/80     done
+[stdout] 
+[stdout] pcacheheavy: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=16
+[stdout] ...
+[stdout] fio-3.36
+[stdout] Starting 4 processes
+[stdout] pcacheheavy: Laying out IO file (1 file / 100MiB)
+[stdout] 
+[stdout] pcacheheavy: (groupid=0, jobs=1): err= 0: pid=2038245: Mon Jun 23 11:44:36 2025
+[stdout]   write: IOPS=25.3k, BW=98.8MiB/s (104MB/s)(1977MiB/20001msec); 0 zone resets
+[stdout]     slat (usec): min=4, max=54833, avg=17.58, stdev=279.60
+[stdout]     clat (usec): min=2, max=4162.4k, avg=613.59, stdev=34034.90
+[stdout]      lat (usec): min=13, max=4162.4k, avg=631.17, stdev=34037.57
+[stdout]     clat percentiles (usec):
+[stdout]      |  1.00th=[  163],  5.00th=[  167], 10.00th=[  169], 20.00th=[  176],
+[stdout]      | 30.00th=[  180], 40.00th=[  182], 50.00th=[  190], 60.00th=[  198],
+[stdout]      | 70.00th=[  221], 80.00th=[  255], 90.00th=[  330], 95.00th=[  494],
+[stdout]      | 99.00th=[  889], 99.50th=[ 1745], 99.90th=[21103], 99.95th=[34866],
+[stdout]      | 99.99th=[81265]
+[stdout]    bw (  KiB/s): min=16031, max=289792, per=49.76%, avg=169884.95, stdev=91483.52, samples=22
+[stdout]    iops        : min= 4007, max=72448, avg=42471.14, stdev=22870.94, samples=22
+[stdout]   lat (usec)   : 4=0.01%, 20=0.01%, 50=0.01%, 100=0.01%, 250=79.53%
+[stdout]   lat (usec)   : 500=16.18%, 750=2.74%, 1000=0.66%
+[stdout]   lat (msec)   : 2=0.41%, 4=0.04%, 10=0.17%, 20=0.15%, 50=0.07%
+[stdout]   lat (msec)   : 100=0.02%, 2000=0.01%, >=2000=0.01%
+[stdout]   cpu          : usr=7.34%, sys=43.45%, ctx=59, majf=0, minf=14
+[stdout]   IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+[stdout]      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      issued rwts: total=0,506091,0,0 short=0,0,0,0 dropped=0,0,0,0
+[stdout]      latency   : target=0, window=0, percentile=100.00%, depth=16
+[stdout] pcacheheavy: (groupid=0, jobs=1): err= 0: pid=2038246: Mon Jun 23 11:44:36 2025
+[stdout]   write: IOPS=20.4k, BW=79.8MiB/s (83.7MB/s)(1901MiB/23834msec); 0 zone resets
+[stdout]     slat (usec): min=5, max=65494, avg=18.40, stdev=303.11
+[stdout]     clat (usec): min=112, max=4173.3k, avg=763.70, stdev=41040.22
+[stdout]      lat (usec): min=121, max=4173.3k, avg=782.10, stdev=41042.34
+[stdout]     clat percentiles (usec):
+[stdout]      |  1.00th=[    176],  5.00th=[    182], 10.00th=[    186],
+[stdout]      | 20.00th=[    194], 30.00th=[    200], 40.00th=[    206],
+[stdout]      | 50.00th=[    212], 60.00th=[    219], 70.00th=[    231],
+[stdout]      | 80.00th=[    285], 90.00th=[    416], 95.00th=[    523],
+[stdout]      | 99.00th=[    881], 99.50th=[   1516], 99.90th=[  21103],
+[stdout]      | 99.95th=[  34866], 99.99th=[1484784]
+[stdout]    bw (  KiB/s): min=20534, max=286704, per=49.58%, avg=169262.96, stdev=91198.17, samples=23
+[stdout]    iops        : min= 5133, max=71676, avg=42315.70, stdev=22799.58, samples=23
+[stdout]   lat (usec)   : 250=75.70%, 500=17.34%, 750=5.67%, 1000=0.45%
+[stdout]   lat (msec)   : 2=0.47%, 4=0.05%, 10=0.10%, 20=0.11%, 50=0.07%
+[stdout]   lat (msec)   : 100=0.02%, 250=0.01%, 2000=0.01%, >=2000=0.01%
+[stdout]   cpu          : usr=5.87%, sys=37.03%, ctx=63, majf=0, minf=13
+[stdout]   IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+[stdout]      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      issued rwts: total=0,486780,0,0 short=0,0,0,0 dropped=0,0,0,0
+[stdout]      latency   : target=0, window=0, percentile=100.00%, depth=16
+[stdout] pcacheheavy: (groupid=0, jobs=1): err= 0: pid=2038247: Mon Jun 23 11:44:36 2025
+[stdout]   write: IOPS=26.3k, BW=103MiB/s (108MB/s)(2053MiB/20001msec); 0 zone resets
+[stdout]     slat (usec): min=4, max=49908, avg=16.95, stdev=225.69
+[stdout]     clat (usec): min=2, max=4186.1k, avg=590.67, stdev=33315.72
+[stdout]      lat (usec): min=13, max=4186.1k, avg=607.62, stdev=33317.83
+[stdout]     clat percentiles (usec):
+[stdout]      |  1.00th=[   161],  5.00th=[   176], 10.00th=[   180], 20.00th=[   188],
+[stdout]      | 30.00th=[   192], 40.00th=[   196], 50.00th=[   202], 60.00th=[   210],
+[stdout]      | 70.00th=[   225], 80.00th=[   281], 90.00th=[   367], 95.00th=[   510],
+[stdout]      | 99.00th=[   963], 99.50th=[  1401], 99.90th=[ 16188], 99.95th=[ 28181],
+[stdout]      | 99.99th=[125305]
+[stdout]    bw (  KiB/s): min= 7840, max=293952, per=50.15%, avg=171223.35, stdev=93404.97, samples=23
+[stdout]    iops        : min= 1960, max=73488, avg=42805.74, stdev=23351.18, samples=23
+[stdout]   lat (usec)   : 4=0.01%, 20=0.01%, 50=0.01%, 100=0.01%, 250=77.37%
+[stdout]   lat (usec)   : 500=16.77%, 750=4.07%, 1000=0.86%
+[stdout]   lat (msec)   : 2=0.61%, 4=0.04%, 10=0.12%, 20=0.08%, 50=0.06%
+[stdout]   lat (msec)   : 100=0.01%, 250=0.01%, 2000=0.01%, >=2000=0.01%
+[stdout]   cpu          : usr=7.18%, sys=44.09%, ctx=76, majf=0, minf=14
+[stdout]   IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+[stdout]      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      issued rwts: total=0,525586,0,0 short=0,0,0,0 dropped=0,0,0,0
+[stdout]      latency   : target=0, window=0, percentile=100.00%, depth=16
+[stdout] pcacheheavy: (groupid=0, jobs=1): err= 0: pid=2038248: Mon Jun 23 11:44:36 2025
+[stdout]   write: IOPS=25.8k, BW=101MiB/s (106MB/s)(2015MiB/20001msec); 0 zone resets
+[stdout]     slat (usec): min=5, max=116607, avg=17.11, stdev=328.35
+[stdout]     clat (usec): min=3, max=4192.5k, avg=602.20, stdev=33956.67
+[stdout]      lat (usec): min=11, max=4192.5k, avg=619.30, stdev=33960.08
+[stdout]     clat percentiles (usec):
+[stdout]      |  1.00th=[   167],  5.00th=[   169], 10.00th=[   172], 20.00th=[   178],
+[stdout]      | 30.00th=[   182], 40.00th=[   186], 50.00th=[   192], 60.00th=[   202],
+[stdout]      | 70.00th=[   219], 80.00th=[   251], 90.00th=[   326], 95.00th=[   474],
+[stdout]      | 99.00th=[   832], 99.50th=[  1303], 99.90th=[ 23200], 99.95th=[ 38011],
+[stdout]      | 99.99th=[149947]
+[stdout]    bw (  KiB/s): min= 3544, max=301344, per=50.84%, avg=173570.55, stdev=107802.60, samples=22
+[stdout]    iops        : min=  886, max=75336, avg=43392.73, stdev=26950.75, samples=22
+[stdout]   lat (usec)   : 4=0.01%, 20=0.01%, 50=0.01%, 100=0.01%, 250=79.91%
+[stdout]   lat (usec)   : 500=16.54%, 750=2.42%, 1000=0.38%
+[stdout]   lat (msec)   : 2=0.42%, 4=0.03%, 10=0.09%, 20=0.10%, 50=0.08%
+[stdout]   lat (msec)   : 100=0.02%, 250=0.01%, 2000=0.01%, >=2000=0.01%
+[stdout]   cpu          : usr=6.81%, sys=43.73%, ctx=38, majf=0, minf=16
+[stdout]   IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+[stdout]      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+[stdout]      issued rwts: total=0,515753,0,0 short=0,0,0,0 dropped=0,0,0,0
+[stdout]      latency   : target=0, window=0, percentile=100.00%, depth=16
+[stdout] 
+[stdout] Run status group 0 (all jobs):
+[stdout]   WRITE: bw=333MiB/s (350MB/s), 79.8MiB/s-103MiB/s (83.7MB/s-108MB/s), io=7946MiB (8332MB), run=20001-23834msec
+[stdout] 
+[stdout] Disk stats (read/write):
+[stdout]     dm-0: ios=6/2034446, sectors=48/16601920, merge=0/0, ticks=0/646728, in_queue=646728, util=85.62%, aggrios=0/0, aggsectors=0/0, aggrmerge=0/0, aggrticks=0/0, aggrin_queue=0, aggrutil=0.00%
+[stdout]   pmem0: ios=0/0, sectors=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+[stdout]   ram0: ios=0/0, sectors=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+[stdout] 
+[stdlog] 2025-06-23 11:44:39,043 avocado.test INFO | pcache script completed successfully
+[stdlog] 2025-06-23 11:44:39,044 avocado.test INFO | pcache test finished.
+[stdlog] 2025-06-23 11:44:39,045 avocado.test INFO | PASS 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-06-23 11:44:39,045 avocado.test INFO | 
