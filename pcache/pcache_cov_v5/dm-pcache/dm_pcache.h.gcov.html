@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - dm_pcache.info - dm-pcache/dm_pcache.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">dm-pcache</a> - dm_pcache.h<span style="font-size: 80%;"> (source / <a href="dm_pcache.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">dm_pcache.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-08-08 03:56:04</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /* SPDX-License-Identifier: GPL-2.0-or-later */</span>
+<span id="L2"><span class="lineNum">       2</span>              : #ifndef _DM_PCACHE_H</span>
+<span id="L3"><span class="lineNum">       3</span>              : #define _DM_PCACHE_H</span>
+<span id="L4"><span class="lineNum">       4</span>              : #include &lt;linux/device-mapper.h&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              : </span>
+<span id="L6"><span class="lineNum">       6</span>              : #include &quot;../dm-core.h&quot;</span>
+<span id="L7"><span class="lineNum">       7</span>              : </span>
+<span id="L8"><span class="lineNum">       8</span>              : #define CACHE_DEV_TO_PCACHE(cache_dev)          (container_of(cache_dev, struct dm_pcache, cache_dev))</span>
+<span id="L9"><span class="lineNum">       9</span>              : #define BACKING_DEV_TO_PCACHE(backing_dev)      (container_of(backing_dev, struct dm_pcache, backing_dev))</span>
+<span id="L10"><span class="lineNum">      10</span>              : #define CACHE_TO_PCACHE(cache)                  (container_of(cache, struct dm_pcache, cache))</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : #define PCACHE_STATE_RUNNING                    1</span>
+<span id="L13"><span class="lineNum">      13</span>              : #define PCACHE_STATE_STOPPING                   2</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span>              : struct pcache_cache_dev;</span>
+<span id="L16"><span class="lineNum">      16</span>              : struct pcache_backing_dev;</span>
+<span id="L17"><span class="lineNum">      17</span>              : struct pcache_cache;</span>
+<span id="L18"><span class="lineNum">      18</span>              : struct pcache_cache_options;</span>
+<span id="L19"><span class="lineNum">      19</span>              : struct dm_pcache {</span>
+<span id="L20"><span class="lineNum">      20</span>              :         struct dm_target *ti;</span>
+<span id="L21"><span class="lineNum">      21</span>              :         struct pcache_cache_dev cache_dev;</span>
+<span id="L22"><span class="lineNum">      22</span>              :         struct pcache_backing_dev backing_dev;</span>
+<span id="L23"><span class="lineNum">      23</span>              :         struct pcache_cache cache;</span>
+<span id="L24"><span class="lineNum">      24</span>              :         struct pcache_cache_options opts;</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              :         spinlock_t                      defered_req_list_lock;</span>
+<span id="L27"><span class="lineNum">      27</span>              :         struct list_head                defered_req_list;</span>
+<span id="L28"><span class="lineNum">      28</span>              :         struct workqueue_struct         *task_wq;</span>
+<span id="L29"><span class="lineNum">      29</span>              : </span>
+<span id="L30"><span class="lineNum">      30</span>              :         struct work_struct              defered_req_work;</span>
+<span id="L31"><span class="lineNum">      31</span>              : </span>
+<span id="L32"><span class="lineNum">      32</span>              :         atomic_t                        inflight_reqs;</span>
+<span id="L33"><span class="lineNum">      33</span>              :         wait_queue_head_t               inflight_wq;</span>
+<span id="L34"><span class="lineNum">      34</span>              : </span>
+<span id="L35"><span class="lineNum">      35</span>              :         spinlock_t                      state_lock;</span>
+<span id="L36"><span class="lineNum">      36</span>              :         u8                              state;</span>
+<span id="L37"><span class="lineNum">      37</span>              : };</span>
+<span id="L38"><span class="lineNum">      38</span>              : </span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC tlaBgGNC">   449351420 : static inline bool __pcache_is_stopping(struct dm_pcache *pcache)</span></span>
+<span id="L40"><span class="lineNum">      40</span>              : {</span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">   449316977 :         return (pcache-&gt;state == PCACHE_STATE_STOPPING);</span></span>
+<span id="L42"><span class="lineNum">      42</span>              : }</span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">   390937675 : static inline bool pcache_is_stopping(struct dm_pcache *pcache)</span></span>
+<span id="L45"><span class="lineNum">      45</span>              : {</span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">   390937675 :         bool stopping;</span></span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">   390937675 :         spin_lock(&amp;pcache-&gt;state_lock);</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">   391015468 :         stopping = __pcache_is_stopping(pcache);;</span></span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">   391015468 :         spin_unlock(&amp;pcache-&gt;state_lock);</span></span>
+<span id="L51"><span class="lineNum">      51</span>              : </span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">   390951838 :         return stopping;</span></span>
+<span id="L53"><span class="lineNum">      53</span>              : }</span>
+<span id="L54"><span class="lineNum">      54</span>              : </span>
+<span id="L55"><span class="lineNum">      55</span>              : #define pcache_dev_err(pcache, fmt, ...)                                                        \</span>
+<span id="L56"><span class="lineNum">      56</span>              :         pcache_err(&quot;%s &quot; fmt, pcache-&gt;ti-&gt;table-&gt;md-&gt;name, ##__VA_ARGS__)</span>
+<span id="L57"><span class="lineNum">      57</span>              : #define pcache_dev_info(pcache, fmt, ...)                                                       \</span>
+<span id="L58"><span class="lineNum">      58</span>              :         pcache_info(&quot;%s &quot; fmt, pcache-&gt;ti-&gt;table-&gt;md-&gt;name, ##__VA_ARGS__)</span>
+<span id="L59"><span class="lineNum">      59</span>              : #define pcache_dev_debug(pcache, fmt, ...)                                                      \</span>
+<span id="L60"><span class="lineNum">      60</span>              :         pcache_debug(&quot;%s &quot; fmt, pcache-&gt;ti-&gt;table-&gt;md-&gt;name, ##__VA_ARGS__)</span>
+<span id="L61"><span class="lineNum">      61</span>              : </span>
+<span id="L62"><span class="lineNum">      62</span>              : struct pcache_request {</span>
+<span id="L63"><span class="lineNum">      63</span>              :         struct dm_pcache        *pcache;</span>
+<span id="L64"><span class="lineNum">      64</span>              :         struct bio              *bio;</span>
+<span id="L65"><span class="lineNum">      65</span>              : </span>
+<span id="L66"><span class="lineNum">      66</span>              :         u64                     off;</span>
+<span id="L67"><span class="lineNum">      67</span>              :         u32                     data_len;</span>
+<span id="L68"><span class="lineNum">      68</span>              : </span>
+<span id="L69"><span class="lineNum">      69</span>              :         struct kref             ref;</span>
+<span id="L70"><span class="lineNum">      70</span>              :         int                     ret;</span>
+<span id="L71"><span class="lineNum">      71</span>              : </span>
+<span id="L72"><span class="lineNum">      72</span>              :         struct list_head        list_node;</span>
+<span id="L73"><span class="lineNum">      73</span>              : };</span>
+<span id="L74"><span class="lineNum">      74</span>              : </span>
+<span id="L75"><span class="lineNum">      75</span>              : void pcache_req_get(struct pcache_request *pcache_req);</span>
+<span id="L76"><span class="lineNum">      76</span>              : void pcache_req_put(struct pcache_request *pcache_req, int ret);</span>
+<span id="L77"><span class="lineNum">      77</span>              : </span>
+<span id="L78"><span class="lineNum">      78</span>              : void pcache_defer_reqs_kick(struct dm_pcache *pcache);</span>
+<span id="L79"><span class="lineNum">      79</span>              : </span>
+<span id="L80"><span class="lineNum">      80</span>              : #endif /* _DM_PCACHE_H */</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
