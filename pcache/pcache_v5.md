@@ -16,6 +16,8 @@ persistent cache target.
 > This patch has been tested extensively. Once it's merged into linux-dm I'll
 > keep running ongoing tests against dm-6.18.
 
+[Full cover letter on dm-devel](https://marc.info/?l=dm-devel&m=175498716132537)
+
 ## Code
 https://github.com/DataTravelGuide/linux/tree/pcache_v5
 
