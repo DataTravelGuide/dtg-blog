@@ -1,0 +1,84 @@
+/workspace/dtg-tests
+cache_mode writearound not supported, skipping
+
++ : /workspace/datatravelguide/covdir
++ : true
++ : true
++ : false
++ : 80
++ : writearound
++ : /dev/ram0p1
++ : /dev/ram0p2
++ [[ true == \t\r\u\e ]]
+++ dirname ./pcache.py.data/pcache.sh
++ bash ./pcache.py.data/pcache_striped.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ : /workspace/linux_compile
++ : /dev/pmem0
++ : /dev/pmem1
++ : /dev/pmem2
++ : /dev/pmem3
++ : false
++ : 80
++ : writearound
++ : /dev/ram0p1
++ : /dev/ram0p2
++ stripe0=striped1
++ stripe1=striped2
+++ basename /dev/ram0p1
++ dm_name0=pcache_ram0p1
+++ basename /dev/ram0p2
++ dm_name1=pcache_ram0p2
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ sudo dmsetup remove striped1
++ sudo dmsetup remove striped2
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754971425
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754971425 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754971425 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ sudo dd if=/dev/zero of=/dev/pmem0 bs=1M count=16 oflag=direct
+16+0 records in
+16+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.0188468 s, 890 MB/s
++ sudo dd if=/dev/zero of=/dev/pmem1 bs=1M count=16 oflag=direct
+16+0 records in
+16+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.0205762 s, 815 MB/s
++ sudo dd if=/dev/zero of=/dev/pmem2 bs=1M count=16 oflag=direct
+16+0 records in
+16+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.0163306 s, 1.0 GB/s
++ sudo dd if=/dev/zero of=/dev/pmem3 bs=1M count=16 oflag=direct
+16+0 records in
+16+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.0197631 s, 849 MB/s
++ sudo dmsetup create striped1 --table '0 8388608 striped 2 8 /dev/pmem0 0 /dev/pmem1 0'
++ sudo dmsetup create striped2 --table '0 8388608 striped 2 8 /dev/pmem2 0 /dev/pmem3 0'
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writearound data_crc false'
+device-mapper: reload ioctl on pcache_ram0p1_probe (252:2) failed: Invalid argument
+Command failed.
++ echo 'cache_mode writearound not supported, skipping'
++ exit 0
++ exit 0
+

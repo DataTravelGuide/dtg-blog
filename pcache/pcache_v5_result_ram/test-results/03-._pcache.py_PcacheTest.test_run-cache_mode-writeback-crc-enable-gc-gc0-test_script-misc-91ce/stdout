@@ -1,0 +1,2024 @@
+/workspace/dtg-tests
+===== Running case01_invalid_cache_mode.sh =====
+DEBUG: case 1 - invalid cache mode should fail
+===== Finished case01_invalid_cache_mode.sh =====
+===== Running case02_invalid_data_crc.sh =====
+DEBUG: case 2 - invalid data_crc should fail
+===== Finished case02_invalid_data_crc.sh =====
+===== Running case03_empty_cache_mode.sh =====
+DEBUG: case 3 - empty cache_mode should fail
+===== Finished case03_empty_cache_mode.sh =====
+===== Running case04_empty_data_crc.sh =====
+DEBUG: case 4 - empty data_crc should fail
+===== Finished case04_empty_data_crc.sh =====
+===== Running case05_create_no_optional_args.sh =====
+DEBUG: case 5 - create without optional arguments
+===== Finished case05_create_no_optional_args.sh =====
+===== Running case06_cache_mode_only.sh =====
+DEBUG: case 6 - cache_mode only
+===== Finished case06_cache_mode_only.sh =====
+===== Running case07_data_crc_only.sh =====
+DEBUG: case 7 - data_crc only
+===== Finished case07_data_crc_only.sh =====
+===== Running case08_invalid_optional_args.sh =====
+DEBUG: case 8 - invalid number_of_optional_arguments should fail
+===== Finished case08_invalid_optional_args.sh =====
+===== Running case09_gc_percent_checks.sh =====
+DEBUG: case 9 - basic create and gc_percent message checks
+===== Finished case09_gc_percent_checks.sh =====
+===== Running case10_persistence_after_recreate.sh =====
+DEBUG: case 10 - data persistence after remove and recreate
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: 8fd2d555-2e05-4ec2-aaba-037f7039404e
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables:  0/80     done                            
+Writing inode tables:  0/80     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/80     done
+
+===== Finished case10_persistence_after_recreate.sh =====
+===== Running case11_remove_while_fio.sh =====
+DEBUG: case 11 - remove pcache while fio running
+pcachetest: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.36
+Starting 1 process
+fio: pid=604154, err=5/file:io_u.c:1896, func=io_u error, error=Input/output error
+
+pcachetest: (groupid=0, jobs=1): err= 5 (file:io_u.c:1896, func=io_u error, error=Input/output error): pid=604154: Tue Aug 12 02:45:03 2025
+  write: IOPS=133k, BW=518MiB/s (543MB/s)(995MiB/1922msec); 0 zone resets
+    slat (usec): min=4, max=628, avg= 5.68, stdev= 2.28
+    clat (nsec): min=839, max=63892, avg=930.37, stdev=499.44
+     lat (usec): min=5, max=630, avg= 6.61, stdev= 2.38
+    clat percentiles (nsec):
+     |  1.00th=[  860],  5.00th=[  876], 10.00th=[  876], 20.00th=[  884],
+     | 30.00th=[  884], 40.00th=[  892], 50.00th=[  900], 60.00th=[  900],
+     | 70.00th=[  908], 80.00th=[  916], 90.00th=[  924], 95.00th=[  940],
+     | 99.00th=[ 1624], 99.50th=[ 2512], 99.90th=[ 8768], 99.95th=[ 9792],
+     | 99.99th=[15040]
+   bw (  KiB/s): min=560728, max=588120, per=100.00%, avg=577274.67, stdev=14558.82, samples=3
+   iops        : min=140184, max=147032, avg=144320.00, stdev=3639.31, samples=3
+  lat (nsec)   : 1000=97.07%
+  lat (usec)   : 2=2.30%, 4=0.44%, 10=0.14%, 20=0.04%, 50=0.01%
+  lat (usec)   : 100=0.01%
+  cpu          : usr=21.19%, sys=71.79%, ctx=25, majf=0, minf=21
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,254811,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=518MiB/s (543MB/s), 518MiB/s-518MiB/s (543MB/s-543MB/s), io=995MiB (1044MB), run=1922-1922msec
+===== Finished case11_remove_while_fio.sh =====
+===== Running case12_fail_after_crc_change.sh =====
+DEBUG: case 12 - dmsetup create should fail after data_crc change
+===== Finished case12_fail_after_crc_change.sh =====
+===== Running case13_flush_cache_persistence.sh =====
+DEBUG: case 13 - flush cached data and verify persistence
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: b584b542-1940-4c0b-8569-293d97846175
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables:  0/80     done                            
+Writing inode tables:  0/80     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/80     done
+
+===== Finished case13_flush_cache_persistence.sh =====
+===== Running case14_heavy_io_consistency.sh =====
+DEBUG: case 14 - verify data consistency under heavy IO
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: 5e5bf951-efbc-4329-9a2d-e26dd4a16e3f
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables:  0/80     done                            
+Writing inode tables:  0/80     done                            
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information:  0/80     done
+
+pcacheheavy: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=16
+...
+fio-3.36
+Starting 4 processes
+pcacheheavy: Laying out IO file (1 file / 100MiB)
+
+pcacheheavy: (groupid=0, jobs=1): err= 0: pid=605067: Tue Aug 12 02:45:46 2025
+  write: IOPS=34.1k, BW=133MiB/s (140MB/s)(2942MiB/22081msec); 0 zone resets
+    slat (usec): min=3, max=1569, avg=12.96, stdev= 5.52
+    clat (usec): min=73, max=5667.1k, avg=455.59, stdev=31913.97
+     lat (usec): min=96, max=5667.1k, avg=468.54, stdev=31913.92
+    clat percentiles (usec):
+     |  1.00th=[  174],  5.00th=[  182], 10.00th=[  186], 20.00th=[  192],
+     | 30.00th=[  198], 40.00th=[  204], 50.00th=[  208], 60.00th=[  217],
+     | 70.00th=[  225], 80.00th=[  233], 90.00th=[  247], 95.00th=[  260],
+     | 99.00th=[  355], 99.50th=[  445], 99.90th=[  693], 99.95th=[ 1057],
+     | 99.99th=[ 4752]
+   bw (  KiB/s): min= 8007, max=305968, per=45.14%, avg=240745.84, stdev=89045.17, samples=25
+   iops        : min= 2001, max=76492, avg=60186.24, stdev=22261.41, samples=25
+  lat (usec)   : 100=0.01%, 250=91.77%, 500=7.89%, 750=0.26%, 1000=0.03%
+  lat (msec)   : 2=0.04%, 4=0.01%, 10=0.01%, >=2000=0.01%
+  cpu          : usr=5.92%, sys=42.88%, ctx=125, majf=0, minf=13
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,753269,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=16
+pcacheheavy: (groupid=0, jobs=1): err= 0: pid=605068: Tue Aug 12 02:45:46 2025
+  write: IOPS=32.7k, BW=128MiB/s (134MB/s)(2817MiB/22081msec); 0 zone resets
+    slat (usec): min=2, max=2348, avg=13.58, stdev= 5.85
+    clat (usec): min=74, max=5662.1k, avg=475.83, stdev=32604.05
+     lat (usec): min=83, max=5662.1k, avg=489.41, stdev=32603.98
+    clat percentiles (usec):
+     |  1.00th=[  180],  5.00th=[  190], 10.00th=[  196], 20.00th=[  204],
+     | 30.00th=[  210], 40.00th=[  217], 50.00th=[  221], 60.00th=[  227],
+     | 70.00th=[  233], 80.00th=[  239], 90.00th=[  251], 95.00th=[  262],
+     | 99.00th=[  351], 99.50th=[  441], 99.90th=[  685], 99.95th=[ 1057],
+     | 99.99th=[10683]
+   bw (  KiB/s): min= 5461, max=286522, per=43.22%, avg=230488.28, stdev=83782.85, samples=25
+   iops        : min= 1365, max=71630, avg=57622.00, stdev=20945.86, samples=25
+  lat (usec)   : 100=0.01%, 250=89.93%, 500=9.79%, 750=0.21%, 1000=0.03%
+  lat (msec)   : 2=0.03%, 4=0.01%, 10=0.01%, 20=0.01%, >=2000=0.01%
+  cpu          : usr=5.46%, sys=43.31%, ctx=95, majf=0, minf=13
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,721178,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=16
+pcacheheavy: (groupid=0, jobs=1): err= 0: pid=605069: Tue Aug 12 02:45:46 2025
+  write: IOPS=33.9k, BW=133MiB/s (139MB/s)(2926MiB/22081msec); 0 zone resets
+    slat (usec): min=2, max=3691, avg=13.05, stdev= 6.42
+    clat (usec): min=67, max=5627.5k, avg=458.12, stdev=31933.38
+     lat (usec): min=76, max=5627.5k, avg=471.16, stdev=31933.32
+    clat percentiles (usec):
+     |  1.00th=[  174],  5.00th=[  182], 10.00th=[  186], 20.00th=[  194],
+     | 30.00th=[  198], 40.00th=[  204], 50.00th=[  210], 60.00th=[  219],
+     | 70.00th=[  227], 80.00th=[  235], 90.00th=[  247], 95.00th=[  262],
+     | 99.00th=[  351], 99.50th=[  437], 99.90th=[  693], 99.95th=[  963],
+     | 99.99th=[ 5080]
+   bw (  KiB/s): min=42610, max=301572, per=46.76%, avg=249404.96, stdev=72015.95, samples=24
+   iops        : min=10652, max=75393, avg=62351.08, stdev=18003.99, samples=24
+  lat (usec)   : 100=0.01%, 250=91.18%, 500=8.53%, 750=0.21%, 1000=0.03%
+  lat (msec)   : 2=0.03%, 4=0.01%, 10=0.01%, >=2000=0.01%
+  cpu          : usr=5.62%, sys=43.22%, ctx=36, majf=0, minf=12
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,749147,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=16
+pcacheheavy: (groupid=0, jobs=1): err= 0: pid=605070: Tue Aug 12 02:45:46 2025
+  write: IOPS=32.6k, BW=127MiB/s (134MB/s)(2814MiB/22080msec); 0 zone resets
+    slat (usec): min=2, max=3240, avg=13.61, stdev= 6.58
+    clat (usec): min=3, max=5642.0k, avg=476.27, stdev=32597.71
+     lat (usec): min=42, max=5642.0k, avg=489.89, stdev=32597.64
+    clat percentiles (usec):
+     |  1.00th=[  178],  5.00th=[  190], 10.00th=[  196], 20.00th=[  204],
+     | 30.00th=[  210], 40.00th=[  217], 50.00th=[  221], 60.00th=[  227],
+     | 70.00th=[  233], 80.00th=[  239], 90.00th=[  251], 95.00th=[  265],
+     | 99.00th=[  363], 99.50th=[  441], 99.90th=[  693], 99.95th=[  930],
+     | 99.99th=[ 2900]
+   bw (  KiB/s): min=13980, max=283664, per=43.17%, avg=230254.64, stdev=81610.10, samples=25
+   iops        : min= 3495, max=70916, avg=57563.40, stdev=20402.48, samples=25
+  lat (usec)   : 4=0.01%, 50=0.01%, 100=0.01%, 250=89.13%, 500=10.55%
+  lat (usec)   : 750=0.24%, 1000=0.03%
+  lat (msec)   : 2=0.04%, 4=0.01%, 10=0.01%, >=2000=0.01%
+  cpu          : usr=5.45%, sys=43.39%, ctx=39, majf=0, minf=14
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=100.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.1%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,720452,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=16
+
+Run status group 0 (all jobs):
+  WRITE: bw=521MiB/s (546MB/s), 127MiB/s-133MiB/s (134MB/s-140MB/s), io=11.2GiB (12.1GB), run=22080-22081msec
+
+Disk stats (read/write):
+    dm-2: ios=6/2944241, sectors=48/23880288, merge=0/0, ticks=0/567564, in_queue=567564, util=96.09%, aggrios=0/0, aggsectors=0/0, aggrmerge=0/0, aggrticks=0/0, aggrin_queue=0, aggrutil=0.00%
+    dm-0: ios=0/0, sectors=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%, aggrios=0/0, aggsectors=0/0, aggrmerge=0/0, aggrticks=0/0, aggrin_queue=0, aggrutil=0.00%
+  pmem1: ios=0/0, sectors=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  pmem0: ios=0/0, sectors=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+  ram0: ios=0/0, sectors=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+===== Finished case14_heavy_io_consistency.sh =====
+===== Running case15_fail_after_cache_mode_change.sh =====
+DEBUG: case 15 - dmsetup create should fail after cache_mode change
+===== Finished case15_fail_after_cache_mode_change.sh =====
+===== Running case16_writethrough_persistence.sh =====
+cache_mode is writeback, skipping writethrough test
+===== Finished case16_writethrough_persistence.sh =====
+===== Running case17_writearound_behavior.sh =====
+cache_mode is writeback, skipping writearound test
+===== Finished case17_writearound_behavior.sh =====
+===== Running case18_writeonly_behavior.sh =====
+cache_mode is writeback, skipping writeonly test
+===== Finished case18_writeonly_behavior.sh =====
+===== Running case19_dmsetup_table_output.sh =====
+DEBUG: case 19 - verify dmsetup table output matches create parameters
+===== Finished case19_dmsetup_table_output.sh =====
+
++ : /workspace/datatravelguide/covdir
++ : true
++ : /workspace/linux_compile
++ : true
++ : /dev/pmem0
++ : /dev/pmem1
++ : true
++ : 0
++ : /dev/ram0p1
++ : /dev/ram0p2
++ : writeback
+++ basename /dev/ram0p1
++ dm_name0=pcache_ram0p1
+++ basename /dev/ram0p2
++ dm_name1=pcache_ram0p2
++ pmem_a=/dev/pmem0
++ pmem_b=/dev/pmem1
++ export pmem_a pmem_b
++ [[ true == \t\r\u\e ]]
++ sudo dmsetup remove striped1
++ sudo dd if=/dev/zero of=/dev/pmem0 bs=1M count=16 oflag=direct
+16+0 records in
+16+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.0198191 s, 847 MB/s
++ sudo dd if=/dev/zero of=/dev/pmem1 bs=1M count=16 oflag=direct
+16+0 records in
+16+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.0196069 s, 856 MB/s
++ sudo dmsetup create striped1 --table '0 8388608 striped 2 8 /dev/pmem0 0 /dev/pmem1 0'
++ cache_dev0=/dev/mapper/striped1
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966676
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966676 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966676 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00265899 s, 394 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00281046 s, 373 MB/s
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ export linux_path cache_dev0 data_crc gc_percent data_dev0 data_dev1 cache_mode dm_name0 dm_name1
++ export -f reset_pmem
+++ dirname ./pcache.py.data/pcache_misc.sh
++ test_dir=./pcache.py.data/pcache_misc_tests
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case01_invalid_cache_mode.sh
++ echo '===== Running case01_invalid_cache_mode.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case01_invalid_cache_mode.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966677
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966677 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966677 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00271439 s, 386 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00314686 s, 333 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00311603 s, 337 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00288099 s, 364 MB/s
++ sync
++ echo 'DEBUG: case 1 - invalid cache mode should fail'
++ sudo dmsetup create pcache_invalid --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode invalid data_crc true'
+device-mapper: reload ioctl on pcache_invalid (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966678
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966678 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966678 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case01_invalid_cache_mode.sh
++ echo '===== Finished case01_invalid_cache_mode.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case02_invalid_data_crc.sh
++ echo '===== Running case02_invalid_data_crc.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case02_invalid_data_crc.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966679
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966679 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966679 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00300343 s, 349 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00319694 s, 328 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00290133 s, 361 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00305992 s, 343 MB/s
++ sync
++ echo 'DEBUG: case 2 - invalid data_crc should fail'
++ sudo dmsetup create pcache_invalid --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc invalid'
+device-mapper: reload ioctl on pcache_invalid (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966680
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966680 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966680 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case02_invalid_data_crc.sh
++ echo '===== Finished case02_invalid_data_crc.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case03_empty_cache_mode.sh
++ echo '===== Running case03_empty_cache_mode.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case03_empty_cache_mode.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966681
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966681 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966681 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00327931 s, 320 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00285704 s, 367 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00313174 s, 335 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00265954 s, 394 MB/s
++ sync
++ echo 'DEBUG: case 3 - empty cache_mode should fail'
++ sudo dmsetup create pcache_invalid --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 data_crc true'
+device-mapper: reload ioctl on pcache_invalid (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966682
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966682 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966682 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case03_empty_cache_mode.sh
++ echo '===== Finished case03_empty_cache_mode.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case04_empty_data_crc.sh
++ echo '===== Running case04_empty_data_crc.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case04_empty_data_crc.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966683
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966683 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966683 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00320978 s, 327 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00319228 s, 328 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00308473 s, 340 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00237806 s, 441 MB/s
++ sync
++ echo 'DEBUG: case 4 - empty data_crc should fail'
++ sudo dmsetup create pcache_invalid --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback'
+device-mapper: reload ioctl on pcache_invalid (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966684
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966684 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966684 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case04_empty_data_crc.sh
++ echo '===== Finished case04_empty_data_crc.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case05_create_no_optional_args.sh
++ echo '===== Running case05_create_no_optional_args.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case05_create_no_optional_args.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966685
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966685 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966685 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00294515 s, 356 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0028705 s, 365 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00277429 s, 378 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00319019 s, 329 MB/s
++ sync
++ echo 'DEBUG: case 5 - create without optional arguments'
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1'
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966686
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966686 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966686 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case05_create_no_optional_args.sh
++ echo '===== Finished case05_create_no_optional_args.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case06_cache_mode_only.sh
++ echo '===== Running case06_cache_mode_only.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case06_cache_mode_only.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966687
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966687 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966687 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00289159 s, 363 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0030579 s, 343 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00276083 s, 380 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00276233 s, 380 MB/s
++ sync
++ echo 'DEBUG: case 6 - cache_mode only'
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 2 cache_mode writeback'
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966689
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966689 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966689 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case06_cache_mode_only.sh
++ echo '===== Finished case06_cache_mode_only.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case07_data_crc_only.sh
++ echo '===== Running case07_data_crc_only.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case07_data_crc_only.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966689
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966689 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966689 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00297049 s, 353 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00282423 s, 371 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00316669 s, 331 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00326696 s, 321 MB/s
++ sync
++ echo 'DEBUG: case 7 - data_crc only'
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 2 data_crc true'
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966691
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966691 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966691 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case07_data_crc_only.sh
++ echo '===== Finished case07_data_crc_only.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case08_invalid_optional_args.sh
++ echo '===== Running case08_invalid_optional_args.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case08_invalid_optional_args.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966692
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966692 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966692 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00318823 s, 329 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00308233 s, 340 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00330668 s, 317 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00289397 s, 362 MB/s
++ sync
++ echo 'DEBUG: case 8 - invalid number_of_optional_arguments should fail'
++ sudo dmsetup create pcache_invalid --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 INVAL cache_mode writeback data_crc true'
+device-mapper: reload ioctl on pcache_invalid (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup create pcache_invalid --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 100 cache_mode writeback data_crc true'
+device-mapper: reload ioctl on pcache_invalid (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966693
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966693 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966693 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case08_invalid_optional_args.sh
++ echo '===== Finished case08_invalid_optional_args.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case09_gc_percent_checks.sh
++ echo '===== Running case09_gc_percent_checks.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case09_gc_percent_checks.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966694
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966694 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966694 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0032906 s, 319 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00232933 s, 450 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00310911 s, 337 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00310749 s, 337 MB/s
++ sync
++ echo 'DEBUG: case 9 - basic create and gc_percent message checks'
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup message pcache_ram0p1 0 gc_percent 91
+device-mapper: message ioctl on pcache_ram0p1  failed: Invalid argument
+Command failed.
++ sudo dmsetup message pcache_ram0p1 0 gc_percent -1
+dmsetup: invalid option -- '1'
+Couldn't process command line.
++ sudo dmsetup message pcache_ram0p1 0 gc_percent ''
+device-mapper: message ioctl on pcache_ram0p1  failed: Invalid argument
+Command failed.
++ sudo dmsetup message pcache_ram0p1 0 gc_percent bad
+device-mapper: message ioctl on pcache_ram0p1  failed: Invalid argument
+Command failed.
++ [[ -n 0 ]]
++ sudo dmsetup message pcache_ram0p1 0 gc_percent 0
++ sudo dmsetup message pcache_ram0p1 0 invalid_cmd 1
+device-mapper: message ioctl on pcache_ram0p1  failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966695
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966695 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966695 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case09_gc_percent_checks.sh
++ echo '===== Finished case09_gc_percent_checks.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case10_persistence_after_recreate.sh
++ echo '===== Running case10_persistence_after_recreate.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case10_persistence_after_recreate.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966696
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966696 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966696 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00315733 s, 332 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00325439 s, 322 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0032088 s, 327 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00319432 s, 328 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ echo 'DEBUG: case 10 - data persistence after remove and recreate'
++ sudo mkfs.ext4 -F /dev/mapper/pcache_ram0p1
+mke2fs 1.47.0 (5-Feb-2023)
++ sudo mkdir -p /mnt/pcache
++ sudo mount /dev/mapper/pcache_ram0p1 /mnt/pcache
++ dd if=/dev/urandom of=/mnt/pcache/testfile bs=1M count=10
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0561512 s, 187 MB/s
+++ md5sum /mnt/pcache/testfile
+++ awk '{print $1}'
++ orig_md5=47ebea3e9b5a36fd6515663f9bf79e76
++ sudo umount /mnt/pcache
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo mount /dev/mapper/pcache_ram0p1 /mnt/pcache
+++ md5sum /mnt/pcache/testfile
+++ awk '{print $1}'
++ new_md5=47ebea3e9b5a36fd6515663f9bf79e76
++ [[ 47ebea3e9b5a36fd6515663f9bf79e76 != \4\7\e\b\e\a\3\e\9\b\5\a\3\6\f\d\6\5\1\5\6\6\3\f\9\b\f\7\9\e\7\6 ]]
++ sudo umount /mnt/pcache
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966699
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966699 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966699 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case10_persistence_after_recreate.sh
++ echo '===== Finished case10_persistence_after_recreate.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case11_remove_while_fio.sh
++ echo '===== Running case11_remove_while_fio.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case11_remove_while_fio.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966699
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966699 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966699 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00342043 s, 307 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00284281 s, 369 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00330154 s, 318 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00339891 s, 309 MB/s
++ sync
++ echo 'DEBUG: case 11 - remove pcache while fio running'
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ fio_pid=604146
++ sleep 2
++ fio --name=pcachetest --filename=/dev/mapper/pcache_ram0p1 --rw=randwrite --bs=4k --runtime=10 --time_based=1 --ioengine=libaio --direct=1
++ sudo dmsetup remove --force pcache_ram0p1
+fio: io_u error on file /dev/mapper/pcache_ram0p1: Input/output error: write offset=2018422784, buflen=4096
++ wait 604146
++ true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966703
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966703 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966703 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case11_remove_while_fio.sh
++ echo '===== Finished case11_remove_while_fio.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case12_fail_after_crc_change.sh
++ echo '===== Running case12_fail_after_crc_change.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case12_fail_after_crc_change.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966704
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966704 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966704 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00336072 s, 312 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00331232 s, 317 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00318995 s, 329 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00322435 s, 325 MB/s
++ sync
++ echo 'DEBUG: case 12 - dmsetup create should fail after data_crc change'
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1
++ [[ true == \t\r\u\e ]]
++ new_crc=false
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc false'
+device-mapper: reload ioctl on pcache_ram0p1 (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966706
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966706 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966706 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case12_fail_after_crc_change.sh
++ echo '===== Finished case12_fail_after_crc_change.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case13_flush_cache_persistence.sh
++ echo '===== Running case13_flush_cache_persistence.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case13_flush_cache_persistence.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966706
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966706 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966706 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00320631 s, 327 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00341043 s, 307 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00314633 s, 333 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00331355 s, 316 MB/s
++ sync
++ echo 'DEBUG: case 13 - flush cached data and verify persistence'
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo mkfs.ext4 -F /dev/mapper/pcache_ram0p1
+mke2fs 1.47.0 (5-Feb-2023)
++ sudo mkdir -p /mnt/pcache
++ sudo mount /dev/mapper/pcache_ram0p1 /mnt/pcache
++ dd if=/dev/urandom of=/mnt/pcache/persistfile bs=1M count=5
+5+0 records in
+5+0 records out
+5242880 bytes (5.2 MB, 5.0 MiB) copied, 0.0376071 s, 139 MB/s
+++ md5sum /mnt/pcache/persistfile
+++ awk '{print $1}'
++ orig_md5=86568b0a536743730182ad3ec933e72a
++ sudo umount /mnt/pcache
++ sudo dmsetup message pcache_ram0p1 0 gc_percent 0
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:0 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:0
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:0 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:0
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:0 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:0
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:0 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:0
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:0 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:0
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:49672 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:49672
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:49672 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:49672
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:49672 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:49672
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:49672 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:49672
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 11 0 3 0:49672 0:49672 0:0'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:49672
++ key_tail=0:0
++ [[ 0:49672 == \0\:\0 ]]
++ sleep 1
++ true
+++ sudo dmsetup status pcache_ram0p1
++ status='0 20971520 pcache 0 255 255 7 0 3 0:49672 0:49672 0:49672'
++ read -ra fields
++ len=12
++ key_head=0:49672
++ dirty_tail=0:49672
++ key_tail=0:49672
++ [[ 0:49672 == \0\:\4\9\6\7\2 ]]
++ break
+++ sudo dmsetup status pcache_ram0p1
++ status_before_remove='0 20971520 pcache 0 255 255 7 0 3 0:49672 0:49672 0:49672'
++ read -ra status_fields
++ status_before_len=12
++ before_key_head=0:49672
++ before_dirty_tail=0:49672
++ before_key_tail=0:49672
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup suspend pcache_ram0p1
++ sudo dmsetup reload pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
+device-mapper: reload ioctl on pcache_ram0p1  failed: Operation not supported
+Command failed.
++ sudo dmsetup resume pcache_ram0p1
+++ sudo dmsetup status pcache_ram0p1
++ status_after_create='0 20971520 pcache 0 255 255 2 70 1183 0:49672 0:49672 0:49672'
++ read -ra status_fields
++ status_after_len=12
++ after_key_head=0:49672
++ after_dirty_tail=0:49672
++ after_key_tail=0:49672
++ [[ 0:49672 != \0\:\4\9\6\7\2 ]]
++ [[ 0:49672 != \0\:\4\9\6\7\2 ]]
++ [[ 0:49672 != \0\:\4\9\6\7\2 ]]
++ sudo dmsetup remove pcache_ram0p1
++ sudo mount /dev/ram0p1 /mnt/pcache
+++ md5sum /mnt/pcache/persistfile
+++ awk '{print $1}'
++ new_md5=86568b0a536743730182ad3ec933e72a
++ [[ 86568b0a536743730182ad3ec933e72a != \8\6\5\6\8\b\0\a\5\3\6\7\4\3\7\3\0\1\8\2\a\d\3\e\c\9\3\3\e\7\2\a ]]
++ sudo umount /mnt/pcache
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00311579 s, 337 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00298022 s, 352 MB/s
++ sync
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo mount /dev/mapper/pcache_ram0p1 /mnt/pcache
+++ md5sum /mnt/pcache/persistfile
+++ awk '{print $1}'
++ new_md5=86568b0a536743730182ad3ec933e72a
++ [[ 86568b0a536743730182ad3ec933e72a != \8\6\5\6\8\b\0\a\5\3\6\7\4\3\7\3\0\1\8\2\a\d\3\e\c\9\3\3\e\7\2\a ]]
++ sudo umount /mnt/pcache
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966720
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966720 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966720 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case13_flush_cache_persistence.sh
++ echo '===== Finished case13_flush_cache_persistence.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case14_heavy_io_consistency.sh
++ echo '===== Running case14_heavy_io_consistency.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case14_heavy_io_consistency.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966721
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966721 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966721 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00313042 s, 335 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00325176 s, 322 MB/s
++ sync
++ echo 'DEBUG: case 14 - verify data consistency under heavy IO'
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0032869 s, 319 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00329103 s, 319 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo mkfs.ext4 -F /dev/mapper/pcache_ram0p1
+mke2fs 1.47.0 (5-Feb-2023)
++ sudo mkdir -p /mnt/pcache
++ sudo mount /dev/mapper/pcache_ram0p1 /mnt/pcache
++ dd if=/dev/urandom of=/mnt/pcache/heavyfile bs=1M count=50
+50+0 records in
+50+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.22135 s, 237 MB/s
+++ md5sum /mnt/pcache/heavyfile
+++ awk '{print $1}'
++ orig_md5=8d35fb3728d0d1f042996e873093d64f
++ [[ -n 0 ]]
++ sudo dmsetup message pcache_ram0p1 0 gc_percent 0
++ dd if=/mnt/pcache/heavyfile of=/mnt/pcache/loadfile bs=4k oflag=direct iflag=fullblock
+12800+0 records in
+12800+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.190658 s, 275 MB/s
+++ md5sum /mnt/pcache/loadfile
+++ awk '{print $1}'
++ new_md5=8d35fb3728d0d1f042996e873093d64f
++ [[ 8d35fb3728d0d1f042996e873093d64f != \8\d\3\5\f\b\3\7\2\8\d\0\d\1\f\0\4\2\9\9\6\e\8\7\3\0\9\3\d\6\4\f ]]
++ fio --name=pcacheheavy --ioengine=libaio --filename=/mnt/pcache/stressfile --rw=randwrite --size=100m --runtime=20 --time_based=1 --bs=4k --direct=1 --numjobs=4 --iodepth=16
+++ md5sum /mnt/pcache/loadfile
+++ awk '{print $1}'
++ new_md5=8d35fb3728d0d1f042996e873093d64f
++ [[ 8d35fb3728d0d1f042996e873093d64f != \8\d\3\5\f\b\3\7\2\8\d\0\d\1\f\0\4\2\9\9\6\e\8\7\3\0\9\3\d\6\4\f ]]
++ sync
++ sudo umount /mnt/pcache
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo mount /dev/mapper/pcache_ram0p1 /mnt/pcache
+++ md5sum /mnt/pcache/heavyfile
+++ awk '{print $1}'
++ new_md5=8d35fb3728d0d1f042996e873093d64f
++ [[ 8d35fb3728d0d1f042996e873093d64f != \8\d\3\5\f\b\3\7\2\8\d\0\d\1\f\0\4\2\9\9\6\e\8\7\3\0\9\3\d\6\4\f ]]
++ sudo umount /mnt/pcache
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966748
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966748 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966748 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case14_heavy_io_consistency.sh
++ echo '===== Finished case14_heavy_io_consistency.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case15_fail_after_cache_mode_change.sh
++ echo '===== Running case15_fail_after_cache_mode_change.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case15_fail_after_cache_mode_change.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966748
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966748 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966748 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00335986 s, 312 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00307143 s, 341 MB/s
++ sync
++ echo 'DEBUG: case 15 - dmsetup create should fail after cache_mode change'
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00311557 s, 337 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00293841 s, 357 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1
++ [[ writeback == \w\r\i\t\e\b\a\c\k ]]
++ new_mode=writethrough
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writethrough data_crc true'
+device-mapper: reload ioctl on pcache_ram0p1 (252:2) failed: Invalid argument
+Command failed.
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966750
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966750 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966750 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case15_fail_after_cache_mode_change.sh
++ echo '===== Finished case15_fail_after_cache_mode_change.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case16_writethrough_persistence.sh
++ echo '===== Running case16_writethrough_persistence.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case16_writethrough_persistence.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966751
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966751 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966751 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00299165 s, 351 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00288076 s, 364 MB/s
++ sync
++ [[ writeback != \w\r\i\t\e\t\h\r\o\u\g\h ]]
++ echo 'cache_mode is writeback, skipping writethrough test'
++ exit 0
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case16_writethrough_persistence.sh
++ echo '===== Finished case16_writethrough_persistence.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case17_writearound_behavior.sh
++ echo '===== Running case17_writearound_behavior.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case17_writearound_behavior.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966752
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966752 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966752 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00307963 s, 340 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00276902 s, 379 MB/s
++ sync
++ [[ writeback != \w\r\i\t\e\a\r\o\u\n\d ]]
++ echo 'cache_mode is writeback, skipping writearound test'
++ exit 0
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case17_writearound_behavior.sh
++ echo '===== Finished case17_writearound_behavior.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case18_writeonly_behavior.sh
++ echo '===== Running case18_writeonly_behavior.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case18_writeonly_behavior.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966753
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966753 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966753 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00375738 s, 279 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00342039 s, 307 MB/s
++ sync
++ [[ writeback != \w\r\i\t\e\o\n\l\y ]]
++ echo 'cache_mode is writeback, skipping writeonly test'
++ exit 0
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case18_writeonly_behavior.sh
++ echo '===== Finished case18_writeonly_behavior.sh ====='
++ for tc in "$test_dir"/*.sh
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case19_dmsetup_table_output.sh
++ echo '===== Running case19_dmsetup_table_output.sh ====='
++ bash ./pcache.py.data/pcache_misc_tests/case19_dmsetup_table_output.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966753
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966753 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966753 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ : writeback
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00319978 s, 328 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00353929 s, 296 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ [[ true == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00319649 s, 328 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00317902 s, 330 MB/s
++ sync
++ echo 'DEBUG: case 19 - verify dmsetup table output matches create parameters'
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/mapper/striped1 /dev/ram0p1 4 cache_mode writeback data_crc true'
+++ lsblk -d -no MAJ:MIN /dev/mapper/striped1
+++ tr -d ' '
++ cache_mm=252:0
+++ lsblk -d -no MAJ:MIN /dev/ram0p1
+++ tr -d ' '
++ data_mm=259:5
++ expected='0 20971520 pcache 252:0 259:5 4 cache_mode writeback crc true'
+++ sudo dmsetup table pcache_ram0p1
++ actual='0 20971520 pcache 252:0 259:5 4 cache_mode writeback crc true'
++ [[ 0 20971520 pcache 252:0 259:5 4 cache_mode writeback crc true != \0\ \2\0\9\7\1\5\2\0\ \p\c\a\c\h\e\ \2\5\2\:\0\ \2\5\9\:\5\ \4\ \c\a\c\h\e\_\m\o\d\e\ \w\r\i\t\e\b\a\c\k\ \c\r\c\ \t\r\u\e ]]
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966755
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966755 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966755 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ sudo tee /dev/kmsg
+++ basename ./pcache.py.data/pcache_misc_tests/case19_dmsetup_table_output.sh
++ echo '===== Finished case19_dmsetup_table_output.sh ====='
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754966756
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966756 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754966756 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
+

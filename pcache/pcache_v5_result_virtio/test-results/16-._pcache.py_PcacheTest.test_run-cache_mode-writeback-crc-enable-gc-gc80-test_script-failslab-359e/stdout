@@ -1,0 +1,315 @@
+/workspace/dtg-tests
+/workspace/linux_compile /workspace/dtg-tests
+patching file drivers/md/dm-pcache/backing_dev.c
+patching file drivers/md/dm-pcache/cache_key.c
+make[1]: Entering directory '/workspace/linux_compile/drivers/md/dm-pcache'
+  CC [M]  backing_dev.o
+  CC [M]  cache_key.o
+  LD [M]  dm-pcache.o
+  MODPOST Module.symvers
+  CC [M]  dm-pcache.mod.o
+  LD [M]  dm-pcache.ko
+make[1]: Leaving directory '/workspace/linux_compile/drivers/md/dm-pcache'
+/workspace/dtg-tests
+meta-data=/dev/mapper/pcache_vdd isize=512    agcount=4, agsize=655360 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+data     =                       bsize=4096   blocks=2621440, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+meta-data=/dev/mapper/pcache_vdd isize=512    agcount=4, agsize=655360 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+data     =                       bsize=4096   blocks=2621440, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+FSTYP         -- xfs (non-debug)
+PLATFORM      -- Linux/x86_64 ubuntu-22-04-720 6.16.0+ #107 SMP PREEMPT_DYNAMIC Sun Aug  3 12:39:53 UTC 2025
+MKFS_OPTIONS  -- -f /dev/mapper/pcache_vde
+MOUNT_OPTIONS -- /dev/mapper/pcache_vde /mnt/scratch
+
+generic/001 9s ...  9s
+Ran: generic/001
+Passed all 1 tests
+
+==> Done. See dmesg for failslab traces.
+/workspace/linux_compile /workspace/xfstests
+patching file drivers/md/dm-pcache/backing_dev.c
+patching file drivers/md/dm-pcache/cache_key.c
+make[1]: Entering directory '/workspace/linux_compile/drivers/md/dm-pcache'
+  CLEAN   Module.symvers
+make[1]: Leaving directory '/workspace/linux_compile/drivers/md/dm-pcache'
+make[1]: Entering directory '/workspace/linux_compile/drivers/md/dm-pcache'
+  CC [M]  dm_pcache.o
+  CC [M]  cache_dev.o
+  CC [M]  segment.o
+  CC [M]  backing_dev.o
+  CC [M]  cache.o
+  CC [M]  cache_gc.o
+  CC [M]  cache_writeback.o
+  CC [M]  cache_segment.o
+  CC [M]  cache_key.o
+  CC [M]  cache_req.o
+  LD [M]  dm-pcache.o
+  MODPOST Module.symvers
+  CC [M]  dm-pcache.mod.o
+  CC [M]  .module-common.o
+  LD [M]  dm-pcache.ko
+make[1]: Leaving directory '/workspace/linux_compile/drivers/md/dm-pcache'
+/workspace/xfstests
+
++ : /workspace/datatravelguide/covdir
++ : true
++ : /workspace/linux_compile
++ : /dev/pmem0
++ : /dev/vdd
++ : /dev/vde
++ : writeback
++ : true
+++ basename /dev/vdd
++ dm_name0=pcache_vdd
+++ basename /dev/vde
++ dm_name1=pcache_vde
++++ dirname ./pcache.py.data/pcache_failslab.sh
+++ realpath ./pcache.py.data/0001-dm-pcache-set-min_nr-of-mempool-to-0.patch
++ PATCH_FILE=/workspace/dtg-tests/pcache.py.data/0001-dm-pcache-set-min_nr-of-mempool-to-0.patch
++ DBG=/sys/kernel/debug/failslab
++ PROB=100
++ INTERVAL=2
++ TIMES=100
++ VERBOSE=1
++ DMESG_LOG=/tmp/pcache_failslab_dmesg.log
++ sudo dmesg -c
++ sudo dmsetup remove pcache_vdd
++ true
++ sudo dmsetup remove pcache_vde
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754976430
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976430 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976430 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00210092 s, 499 MB/s
+++ sudo blockdev --getsz /dev/vdd
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vdd_probe --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_vdd_probe
++ trap cleanup EXIT
++ apply_patch
++ pushd /workspace/linux_compile
++ patch -Np1
++ make M=drivers/md/dm-pcache/
++ popd
++ configure_failslab
++ sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/probability'
++ sudo sh -c 'echo 2 > /sys/kernel/debug/failslab/interval'
++ sudo sh -c 'echo 1 > /sys/kernel/debug/failslab/verbose'
++ sudo sh -c 'echo Y > /sys/kernel/debug/failslab/cache-filter'
++ sudo sh -c 'echo N > /sys/kernel/debug/failslab/ignore-gfp-wait'
++ sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/times'
++ bash ./pcache.py.data/pcache.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ : false
++ : true
++ : 80
++ : writeback
++ : /dev/vdd
++ : /dev/vde
++ [[ false == \t\r\u\e ]]
+++ basename /dev/vdd
++ dm_name0=pcache_vdd
+++ basename /dev/vde
++ dm_name1=pcache_vde
++ sudo dmsetup remove pcache_vdd
++ true
++ sudo dmsetup remove pcache_vde
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754976441
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976441 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976441 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00213535 s, 491 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00219331 s, 478 MB/s
+++ sudo blockdev --getsz /dev/vdd
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vdd_probe --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_vdd_probe
+++ sudo blockdev --getsz /dev/vdd
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vdd --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
+++ sudo blockdev --getsz /dev/vde
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vde --table '0 20971520 pcache /dev/pmem1 /dev/vde 4 cache_mode writeback data_crc true'
++ [[ -n 80 ]]
++ sudo dmsetup message pcache_vdd 0 gc_percent 80
++ sudo dmsetup message pcache_vde 0 gc_percent 80
++ sudo mkfs.xfs -f /dev/mapper/pcache_vdd
++ sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_cache_key/failslab'
++ sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_backing_dev_req/failslab'
++ sudo sh -c 'echo "file cache_key.c +p" > /sys/kernel/debug/dynamic_debug/control'
++ sudo sh -c 'echo "file cache_req.c +p" > /sys/kernel/debug/dynamic_debug/control'
++ dd if=/dev/mapper/pcache_vdd of=/dev/null bs=4M count=100 iflag=direct
+100+0 records in
+100+0 records out
+419430400 bytes (419 MB, 400 MiB) copied, 2.4511 s, 171 MB/s
++ reset_pmem
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00216993 s, 483 MB/s
++ sync
++ bash ./pcache.py.data/pcache.sh
++ : /workspace/datatravelguide/covdir
++ : true
++ : false
++ : true
++ : 80
++ : writeback
++ : /dev/vdd
++ : /dev/vde
++ [[ false == \t\r\u\e ]]
+++ basename /dev/vdd
++ dm_name0=pcache_vdd
+++ basename /dev/vde
++ dm_name1=pcache_vde
++ sudo dmsetup remove pcache_vdd
++ sudo dmsetup remove pcache_vde
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754976445
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976445 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976445 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00210426 s, 498 MB/s
++ dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00202483 s, 518 MB/s
+++ sudo blockdev --getsz /dev/vdd
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vdd_probe --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
++ sudo dmsetup remove pcache_vdd_probe
+++ sudo blockdev --getsz /dev/vdd
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vdd --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
+++ sudo blockdev --getsz /dev/vde
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vde --table '0 20971520 pcache /dev/pmem1 /dev/vde 4 cache_mode writeback data_crc true'
++ [[ -n 80 ]]
++ sudo dmsetup message pcache_vdd 0 gc_percent 80
++ sudo dmsetup message pcache_vde 0 gc_percent 80
++ sudo mkfs.xfs -f /dev/mapper/pcache_vdd
++ reset_failslab
++ sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/probability'
++ sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/interval'
++ sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/verbose'
++ sudo sh -c 'echo N > /sys/kernel/debug/failslab/cache-filter'
++ sudo sh -c 'echo Y > /sys/kernel/debug/failslab/ignore-gfp-wait'
++ sudo sh -c 'echo 0 > /sys/kernel/debug/failslab/times'
++ sudo sh -c 'echo 0 > /sys/kernel/slab/pcache_cache_key/failslab'
++ sudo sh -c 'echo 0 > /sys/kernel/slab/pcache_backing_dev_req/failslab'
++ configure_failslab
++ sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/probability'
++ sudo sh -c 'echo 2 > /sys/kernel/debug/failslab/interval'
++ sudo sh -c 'echo 1 > /sys/kernel/debug/failslab/verbose'
++ sudo sh -c 'echo Y > /sys/kernel/debug/failslab/cache-filter'
++ sudo sh -c 'echo N > /sys/kernel/debug/failslab/ignore-gfp-wait'
++ sudo sh -c 'echo 100 > /sys/kernel/debug/failslab/times'
++ sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_cache_key/failslab'
++ sudo sh -c 'echo 1 > /sys/kernel/slab/pcache_backing_dev_req/failslab'
++ sudo sh -c 'echo "file cache_key.c +p" > /sys/kernel/debug/dynamic_debug/control'
++ sudo sh -c 'echo "file cache_req.c +p" > /sys/kernel/debug/dynamic_debug/control'
++ cd /workspace/xfstests
++ ./check generic/001
++ sudo dmesg
++ grep -q 'allocate pre_alloc_key with GFP_NOIO' /tmp/pcache_failslab_dmesg.log
++ grep -q 'allocate pre_alloc_req with GFP_NOIO' /tmp/pcache_failslab_dmesg.log
++ echo '==> Done. See dmesg for failslab traces.'
++ cleanup
++ echo 0
++ sudo dmsetup remove pcache_vdd
++ sudo dmsetup remove pcache_vde
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754976458
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976458 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754976458 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ revert_patch
++ pushd /workspace/linux_compile
++ patch -Rp1
++ make M=drivers/md/dm-pcache/ clean
++ make M=drivers/md/dm-pcache/
++ popd
+

@@ -1,0 +1,49 @@
+/workspace/dtg-tests
+cache_mode writearound not supported, skipping
+
++ : /workspace/datatravelguide/covdir
++ : false
++ : /workspace/linux_compile
++ : false
++ : /dev/pmem0
++ : /dev/pmem1
++ : true
++ : 0
++ : /dev/vdc
++ : /dev/vdd
++ : writearound
+++ basename /dev/vdc
++ dm_name0=pcache_vdc
+++ basename /dev/vdd
++ dm_name1=pcache_vdd
++ pmem_a=/dev/pmem0
++ pmem_b=/dev/pmem1
++ export pmem_a pmem_b
++ [[ false == \t\r\u\e ]]
++ sudo dmsetup remove pcache_vdc
++ true
++ sudo dmsetup remove pcache_vdd
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ false != \t\r\u\e ]]
++ return
++ sudo rmmod dm-pcache
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ false != \t\r\u\e ]]
++ return
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ [[ false == \t\r\u\e ]]
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00115362 s, 909 MB/s
+++ sudo blockdev --getsz /dev/vdc
++ SEC_NR=20971520
++ sudo dmsetup create pcache_vdc_probe --table '0 20971520 pcache /dev/pmem0 /dev/vdc 4 cache_mode writearound data_crc true'
+device-mapper: reload ioctl on pcache_vdc_probe (253:0) failed: Invalid argument
+Command failed.
++ echo 'cache_mode writearound not supported, skipping'
++ exit 0
+

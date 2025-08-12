@@ -1,0 +1,128 @@
+/workspace/dtg-tests
+
++ : /workspace/datatravelguide/covdir
++ : true
++ : /workspace/linux_compile
++ : /dev/pmem0
++ : /dev/ram0p1
++ : /dev/ram0p2
++ : writeback
++ : false
+++ basename /dev/ram0p1
++ DM_NAME=pcache_ram0p1
+++ basename /dev/ram0p2
++ DM_NAME1=pcache_ram0p2
++ trap cleanup EXIT
++ sudo dmsetup remove pcache_ram0p1
++ true
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754971280
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754971280 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754971280 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ true
++ pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
++ reset_pmem
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00317685 s, 330 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1_probe --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc false'
++ sudo dmsetup remove pcache_ram0p1_probe
++ reset_pmem
++ dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00283572 s, 370 MB/s
++ sync
+++ sudo blockdev --getsz /dev/ram0p1
++ SEC_NR=20971520
++ sudo dmsetup create pcache_ram0p1 --table '0 20971520 pcache /dev/pmem0 /dev/ram0p1 4 cache_mode writeback data_crc false'
++ sudo sh -c 'echo 2 > /sys/kernel/debug/fail_make_request/interval'
++ sudo sh -c 'echo 50 > /sys/kernel/debug/fail_make_request/probability'
++ sudo sh -c 'echo 100 > /sys/kernel/debug/fail_make_request/times'
++ sudo sh -c 'echo 1 > /sys/kernel/debug/fail_make_request/verbose'
+++ lsblk -d -no MAJ:MIN /dev/ram0p1
+++ tr -d '[:space:]'
++ MAJ_MIN=259:5
++ MAKE_FAIL_PATH=/sys/dev/block/259:5/make-it-fail
++ [[ ! -e /sys/dev/block/259:5/make-it-fail ]]
++ sudo sh -c 'echo 1 > /sys/dev/block/259:5/make-it-fail'
++ dd if=/dev/mapper/pcache_ram0p1 of=/dev/null bs=1M count=100 iflag=direct
+dd: error reading '/dev/mapper/pcache_ram0p1': Input/output error
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00313874 s, 334 MB/s
++ expect_write_success=false
++ [[ writeback == \w\r\i\t\e\b\a\c\k ]]
++ expect_write_success=true
+++ mktemp
++ TMP_IN=/tmp/tmp.e5ZgNxFT3j
++ dd if=/dev/urandom of=/tmp/tmp.e5ZgNxFT3j bs=1M count=100
+100+0 records in
+100+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.485224 s, 216 MB/s
++ dd if=/tmp/tmp.e5ZgNxFT3j of=/dev/mapper/pcache_ram0p1 bs=1M count=100 oflag=direct
+100+0 records in
+100+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.0784258 s, 1.3 GB/s
++ [[ true == true ]]
+++ mktemp
++ TMP_OUT=/tmp/tmp.z1RMxqZnjA
++ dd if=/dev/mapper/pcache_ram0p1 of=/tmp/tmp.z1RMxqZnjA bs=1M count=100 iflag=direct
+100+0 records in
+100+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.102297 s, 1.0 GB/s
+++ md5sum /tmp/tmp.e5ZgNxFT3j
+++ awk '{print $1}'
++ orig_md5=325cbb01cbba9a9a21dc06bbf2c0c4e1
+++ md5sum /tmp/tmp.z1RMxqZnjA
+++ awk '{print $1}'
++ new_md5=325cbb01cbba9a9a21dc06bbf2c0c4e1
++ [[ 325cbb01cbba9a9a21dc06bbf2c0c4e1 != \3\2\5\c\b\b\0\1\c\b\b\a\9\a\9\a\2\1\d\c\0\6\b\b\f\2\c\0\c\4\e\1 ]]
++ cleanup
++ [[ -n /sys/dev/block/259:5/make-it-fail ]]
++ sudo sh -c 'echo 0 > /sys/dev/block/259:5/make-it-fail'
++ sudo sh -c 'echo 0 > /sys/kernel/debug/fail_make_request/times'
++ sudo sh -c 'echo 0 > /sys/kernel/debug/fail_make_request/verbose'
++ sudo dmsetup remove pcache_ram0p1
++ sudo dmsetup remove pcache_ram0p2
++ true
++ pcache_rmmod
++ dump_gcov
++ [[ true != \t\r\u\e ]]
+++ date +%s
++ ts=1754971283
++ mkdir -p /workspace/datatravelguide/covdir
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754971283 ';'
++ sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754971283 ';'
++ reset_gcov
++ [[ true != \t\r\u\e ]]
++ echo 1
++ sudo tee /sys/kernel/debug/gcov/reset
++ sudo rmmod dm-pcache
++ [[ -n /tmp/tmp.e5ZgNxFT3j ]]
++ [[ -f /tmp/tmp.e5ZgNxFT3j ]]
++ rm -f /tmp/tmp.e5ZgNxFT3j
++ [[ -n /tmp/tmp.z1RMxqZnjA ]]
++ [[ -f /tmp/tmp.z1RMxqZnjA ]]
++ rm -f /tmp/tmp.z1RMxqZnjA
+

@@ -1,0 +1,86 @@
+[stdlog] 2025-08-12 03:49:03,963 avocado.test INFO | INIT 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-12 03:49:03,968 avocado.test DEBUG| PARAMS (key=timeout, path=*, default=None) => None
+[stdlog] 2025-08-12 03:49:03,968 avocado.test DEBUG| Test metadata:
+[stdlog] 2025-08-12 03:49:03,969 avocado.test DEBUG|   filename: /workspace/dtg-tests/pcache.py
+[stdlog] 2025-08-12 03:49:03,969 avocado.test DEBUG|   teststmpdir: /var/tmp/avocado_vosjs0nz
+[stdlog] 2025-08-12 03:49:03,971 avocado.test INFO | START 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-12 03:49:03,971 avocado.test DEBUG| PARAMS (key=striped, path=*, default=false) => False
+[stdlog] 2025-08-12 03:49:03,972 avocado.test DEBUG| PARAMS (key=gcov, path=*, default=false) => True
+[stdlog] 2025-08-12 03:49:03,972 avocado.test INFO | env_dict: {'linux_path': '/workspace/linux_compile', 'covdir': '/workspace/datatravelguide/covdir', 'gcov': 'true', 'cache_dev0': '/dev/pmem0', 'cache_dev1': '/dev/pmem1', 'cache_dev2': '/dev/pmem2', 'cache_dev3': '/dev/pmem3', 'striped': 'false', 'data_dev0': '/dev/vdd', 'data_dev1': '/dev/vde', 'cache_mode': 'writeback', 'gc_percent': '0', 'data_crc': 'true', 'test_script': './pcache.py.data/pcache.sh'}
+[stdlog] 2025-08-12 03:49:03,973 avocado.test DEBUG| PARAMS (key=test_script, path=*, default=None) => './pcache.py.data/pcache.sh'
+[stdout] /workspace/dtg-tests
+[stdout] meta-data=/dev/mapper/pcache_vdd isize=512    agcount=4, agsize=655360 blks
+[stdout]          =                       sectsz=512   attr=2, projid32bit=1
+[stdout]          =                       crc=1        finobt=1, sparse=1, rmapbt=1
+[stdout]          =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+[stdout] data     =                       bsize=4096   blocks=2621440, imaxpct=25
+[stdout]          =                       sunit=0      swidth=0 blks
+[stdout] naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+[stdout] log      =internal log           bsize=4096   blocks=16384, version=2
+[stdout]          =                       sectsz=512   sunit=0 blks, lazy-count=1
+[stdout] realtime =none                   extsz=4096   blocks=0, rtextents=0
+[stdout] 
+[stdout] + : /workspace/datatravelguide/covdir
+[stdout] + : true
+[stdout] + : false
+[stdout] + : true
+[stdout] + : 0
+[stdout] + : writeback
+[stdout] + : /dev/vdd
+[stdout] + : /dev/vde
+[stdout] + [[ false == \t\r\u\e ]]
+[stdout] ++ basename /dev/vdd
+[stdout] + dm_name0=pcache_vdd
+[stdout] ++ basename /dev/vde
+[stdout] + dm_name1=pcache_vde
+[stdout] + sudo dmsetup remove pcache_vdd
+[stdout] + true
+[stdout] + sudo dmsetup remove pcache_vde
+[stdout] + true
+[stdout] + pcache_rmmod
+[stdout] + dump_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] ++ date +%s
+[stdout] + ts=1754970544
+[stdout] + mkdir -p /workspace/datatravelguide/covdir
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcda' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754970544 ';'
+[stdout] + sudo find /sys/kernel/debug/gcov -path '*dm-pcache*gcno' -exec sh -c 'cp "$1" "$2/$3_$(basename "$1")"' _ '{}' /workspace/datatravelguide/covdir 1754970544 ';'
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo rmmod dm-pcache
+[stdout] + true
+[stdout] + pcache_insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + reset_gcov
+[stdout] + [[ true != \t\r\u\e ]]
+[stdout] + echo 1
+[stdout] + sudo tee /sys/kernel/debug/gcov/reset
+[stdout] + sudo insmod /workspace/linux_compile/drivers/md/dm-pcache/dm-pcache.ko
+[stdout] + dd if=/dev/zero of=/dev/pmem0 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00284302 s, 369 MB/s
+[stdout] + dd if=/dev/zero of=/dev/pmem1 bs=1M count=1 oflag=direct
+[stdout] 1+0 records in
+[stdout] 1+0 records out
+[stdout] 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.00280788 s, 373 MB/s
+[stdout] ++ sudo blockdev --getsz /dev/vdd
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_vdd_probe --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
+[stdout] + sudo dmsetup remove pcache_vdd_probe
+[stdout] ++ sudo blockdev --getsz /dev/vdd
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_vdd --table '0 20971520 pcache /dev/pmem0 /dev/vdd 4 cache_mode writeback data_crc true'
+[stdout] ++ sudo blockdev --getsz /dev/vde
+[stdout] + SEC_NR=20971520
+[stdout] + sudo dmsetup create pcache_vde --table '0 20971520 pcache /dev/pmem1 /dev/vde 4 cache_mode writeback data_crc true'
+[stdout] + [[ -n 0 ]]
+[stdout] + sudo dmsetup message pcache_vdd 0 gc_percent 0
+[stdout] + sudo dmsetup message pcache_vde 0 gc_percent 0
+[stdout] + sudo mkfs.xfs -f /dev/mapper/pcache_vdd
+[stdout] 
+[stdlog] 2025-08-12 03:49:05,651 avocado.test INFO | pcache script completed successfully
+[stdlog] 2025-08-12 03:49:05,652 avocado.test INFO | pcache test finished.
+[stdlog] 2025-08-12 03:49:05,653 avocado.test INFO | PASS 1-./pcache.py:PcacheTest.test
+[stdlog] 2025-08-12 03:49:05,653 avocado.test INFO | 
