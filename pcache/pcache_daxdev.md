@@ -92,9 +92,10 @@ Arguments:
 
 | Argument         | Meaning                     |
 | ---------------- | --------------------------- |
+| `67108864`       | result of `blockdev --getsz`|
 | `/dev/dax0.0`    | Cache device                |
 | `/dev/nvme0n1p7` | Backing NVMe device         |
-| `2`              | pcache block size (2 * 4KB) |
+| `2`              | optional parameter number   |
 | `data_crc false` | Disable data CRC            |
 
 Resulting device:
